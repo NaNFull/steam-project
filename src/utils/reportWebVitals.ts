@@ -1,5 +1,6 @@
 import type { ReportHandler } from 'web-vitals';
 
+// TODO: Отключить для приложения Electron, добавить в поддержку браузерной версии
 export default (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     import('web-vitals')

@@ -1,4 +1,4 @@
-import type { IExchangeRate } from '@src/pages/tradeit/types.ts';
+import type { IExchangeRate } from '@src/pages/tradeit/types';
 
 const rate: IExchangeRate = {
   AED: 3.598_955_92,

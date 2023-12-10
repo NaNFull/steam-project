@@ -1,9 +1,11 @@
 {
     "compilerOptions": {
         "target": "ESNext",
+        "allowSyntheticDefaultImports": true,
         "useDefineForClassFields": true,
         "lib": ["ESNext", "DOM", "DOM.Iterable"],
-        "module": "ESNext",
+        "module": "commonjs",
+        "esModuleInterop": true,
         "skipLibCheck": true,
 
         /* Bundler mode */
@@ -24,11 +26,12 @@
         "types": ["node", "jest"],
         "typeRoots": ["./node_modules/@types"],
         "paths": {
-            "@src/*": ["src/*"]
+            "@src/*": ["src/*"],
+            "@temp/*": ["temp/*"]
         }
     },
     "references": [{ "path": "./tsconfig.node.json" }],
-    "include": ["src"],
+    "include": ["src", "temp", "server"],
     "exclude": [
         "node_modules",
         "temp"

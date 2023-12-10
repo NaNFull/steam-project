@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Footer from './ui/footer/Footer.tsx';
-import Header from './ui/header/Header.tsx';
+import Footer from './ui/footer/Footer';
+import Header from './ui/header/Header';
 
 function App({ children }: PropsWithChildren) {
   return (

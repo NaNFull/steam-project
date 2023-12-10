@@ -1,10 +1,11 @@
-import { inventoryTradeit } from '@src/pages/tradeit/settings.ts';
-import type { IResponseData } from '@src/pages/tradeit/types.ts';
+import type { IDataItem, IResponseData } from '@src/pages/tradeit/types';
+import { TradeitAPI } from '@src/utils/api.ts';
+import type { ICurrenciesCodes } from '@src/utils/helperTradeit.ts';
 
 export const fetchInventoryData = async () => {
   try {
-    const url = new URL(inventoryTradeit);
-    // const params = new URLSearchParams(url.search);
+    const tradeitAPI = new TradeitAPI();
+    const url = new URL(tradeitAPI.getPathInventory());
 
     url.searchParams.set('gameId', '252490');
     url.searchParams.set('offset', '0');
@@ -16,7 +17,7 @@ export const fetchInventoryData = async () => {
     url.searchParams.set('limit', '500');
     url.searchParams.set('isForStore', '0');
 
-    const response = await fetch('http://localhost:3000/api');
+    const response = await fetch(url);
 
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
@@ -27,3 +28,33 @@ export const fetchInventoryData = async () => {
     console.error('There was a problem with the fetch operation:', error);
   }
 };
+
+export const formatterData = (
+  data: IResponseData,
+  rate = 1,
+  profit = 0.7,
+  currency: ICurrenciesCodes,
+  remainder: number
+): IDataItem[] =>
+  data.items.map(({ groupId, id, imgURL, name, price, steamAppId }) => {
+    // Разбиваем URL по символу "/"
+    const parts = imgURL.split('/');
+    const imageId = parts.at(-1)?.replace(/\.[^./]+$/, '');
+    const tempPriceUSD = price / 100;
+    const tempPriceInCurrency = (rate * price) / 100;
+    const tempPriceTM = tempPriceInCurrency * profit;
+
+    return {
+      count: data.counts[groupId],
+      currency,
+      id,
+      imageId,
+      key: id,
+      name,
+      priceInCurrency: tempPriceInCurrency,
+      priceTM: tempPriceTM,
+      priceUSD: tempPriceUSD,
+      remainder,
+      steamAppId: steamAppId
+    };
+  });

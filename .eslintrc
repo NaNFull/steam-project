@@ -53,6 +53,7 @@
     "jest": true
   },
   "rules": {
+    "react/prop-types": "warn",
     "react/display-name": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
@@ -147,10 +148,13 @@
         "multiline": "last",
         "reservedFirst": ["key", "ref"]
       }
-    ]
+    ],
+    "react-perf/jsx-no-new-object-as-prop": "warn",
+    "react-perf/jsx-no-new-array-as-prop": "warn",
+    "react-perf/jsx-no-new-function-as-prop": "warn",
+    "react-perf/jsx-no-jsx-as-prop": "warn"
   },
   "ignorePatterns": [
-    "proxy/**/*",
     "vite.config.js",
     "reportWebVitals.js",
     "setupTests.js",
@@ -196,6 +200,7 @@
       "plugin:you-dont-need-lodash-underscore/compatible"
     ],
     "rules": {
+      "react/prop-types": "warn",
       "react/display-name": "off",
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
@@ -273,6 +278,10 @@
         "char": "’",
         "alternatives": ["&rsquo;"]
       }]}],
+      "react-perf/jsx-no-new-object-as-prop": "warn",
+      "react-perf/jsx-no-new-array-as-prop": "warn",
+      "react-perf/jsx-no-new-function-as-prop": "warn",
+      "react-perf/jsx-no-jsx-as-prop": "warn",
       "no-explicit-any": "off",
       "unicorn/prefer-at": ["error"],
       "unicorn/prefer-string-replace-all": ["error"],

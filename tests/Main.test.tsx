@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, userEvent } from './test-utils';
-import Main from '../src/pages/Home';
+import Main from '@src/pages/Home';
 
 describe('Simple working test', () => {
   it('the title is visible', () => {

@@ -1,12 +1,6 @@
+import type { ITestState, ITestStore } from '@src/store/types.store.ts';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-
-interface ITestState {
-  test: boolean;
-}
-type ITestStore = ITestState & {
-  setTest: (value: boolean) => void;
-};
 
 const InitialState: ITestState = {
   test: false

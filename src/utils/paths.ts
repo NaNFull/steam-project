@@ -10,5 +10,6 @@ export function buildPath(baseURL: string, requestedURL: string) {
   if (baseURL && !isAbsoluteURL(requestedURL)) {
     return combineURLs(baseURL, requestedURL);
   }
+
   return requestedURL;
 }

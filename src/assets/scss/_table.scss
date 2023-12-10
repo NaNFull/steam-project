@@ -1,0 +1,19 @@
+.main_page {
+  td.MuiTableCell-body {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .name_column img {
+    height: 50px;
+    margin-top: -8px;
+    margin-bottom: -15px;
+  }
+
+  &.spacious {
+    .name_column img {
+      height: 100px;
+    }
+  }
+}
+
