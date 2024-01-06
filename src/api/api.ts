@@ -10,24 +10,30 @@ export class API {
 
 export class TradeitAPI extends API {
   #api: string;
-  #pathInventory: string;
+  #pathData: string;
+  #pathMyData: string;
   #pathCurrencies: string;
   #pathImages: string;
 
   public constructor() {
     super();
-    this.#api = path.join(this.getAPI(), 'Tradeit');
-    this.#pathInventory = path.join(this.#api, 'inventory/data');
+    this.#api = path.join(this.getAPI(), 'tradeit');
+    this.#pathData = path.join(this.#api, 'data');
+    this.#pathMyData = path.join(this.#api, 'my-data');
     this.#pathCurrencies = path.join(this.#api, 'exchange-rate');
-    this.#pathImages = path.join(this.#api, 'Images');
+    this.#pathImages = path.join(this.#api, 'images');
   }
 
   public getTradeitAPI(): string {
     return this.#api;
   }
 
-  public getPathInventory(): string {
-    return this.#pathInventory;
+  public getPathData(): string {
+    return this.#pathData;
+  }
+
+  public getPathMyData(): string {
+    return this.#pathMyData;
   }
 
   public getPathCurrencies(): string {

@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import type { PriceColumnProps } from '@src/pages/tradeit/TableRenders/renders.types.ts';
-import { currenciesBase } from '@src/utils/helperTradeit.ts';
+import { currenciesBase } from '@src/utils/helpers/helperTradeit.ts';
 
 function PriceColumn({ currency, price, priceUSD, remainder }: PriceColumnProps) {
   return (

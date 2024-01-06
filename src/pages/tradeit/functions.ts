@@ -1,11 +1,11 @@
+import { TradeitAPI } from '@src/api/api.ts';
 import type { IDataItem, IResponseData } from '@src/pages/tradeit/types';
-import { TradeitAPI } from '@src/utils/api.ts';
-import type { ICurrenciesCodes } from '@src/utils/helperTradeit.ts';
+import type { ICurrenciesCodes } from '@src/utils/helpers/helperTradeit.ts';
 
 export const fetchInventoryData = async () => {
   try {
     const tradeitAPI = new TradeitAPI();
-    const url = new URL(tradeitAPI.getPathInventory());
+    const url = new URL(tradeitAPI.getPathData());
 
     url.searchParams.set('gameId', '252490');
     url.searchParams.set('offset', '0');

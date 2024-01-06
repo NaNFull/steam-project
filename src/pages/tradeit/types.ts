@@ -1,4 +1,4 @@
-import type { ICurrenciesCodes } from '@src/utils/helperTradeit.ts';
+import type { ICurrenciesCodes } from '@src/utils/helpers/helperTradeit.ts';
 
 export interface IDataItem {
   key: number;

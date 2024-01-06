@@ -4,8 +4,8 @@ import { columns } from '@src/pages/settings.tsx';
 import { formatterData } from '@src/pages/tradeit/functions';
 import * as responseData from '@src/pages/tradeit/temp.json';
 import type { IResponseData } from '@src/pages/tradeit/types';
-import type { ICurrenciesCodes } from '@src/utils/helperTradeit.ts';
-import { currenciesToKeep } from '@src/utils/helperTradeit.ts';
+import type { ICurrenciesCodes } from '@src/utils/helpers/helperTradeit.ts';
+import { currenciesToKeep } from '@src/utils/helpers/helperTradeit.ts';
 import { clsx } from 'clsx';
 import constant from 'lodash-es/constant';
 import type { MRT_DensityState } from 'material-react-table';
@@ -22,7 +22,6 @@ function MainPage() {
   const [currency, setCurrency] = useState<ICurrenciesCodes>('RUB');
   const [remainder, setRemainder] = useState(2);
 
-  // const valueLabelFormat = useCallback((value: number) => `${Math.floor(value * 100)} %`, []);
   const onProfitPercent = useCallback((_event: Event, value: number | number[]) => {
     setProfitPercent(value as number);
   }, []);
@@ -56,7 +55,6 @@ function MainPage() {
     }
   }, [remainder]);
 
-  // TODO: Добавить новые валюты
   const memoData = useMemo(
     () => formatterData(data, currencies[currency], profitPercent, currency, remainder),
     [currency, data, profitPercent, remainder]
@@ -78,8 +76,8 @@ function MainPage() {
         <Box ml="auto" sx={{ width: 300 }}>
           <TextField
             select
-            defaultValue="EUR"
-            helperText="Пожалуйста выберете вашу валюту"
+            defaultValue="RUB"
+            helperText="Выберете вашу валюту"
             id="standard-select-currency"
             label="Валюта"
             value={currency}
