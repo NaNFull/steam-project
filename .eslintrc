@@ -159,7 +159,8 @@
     "reportWebVitals.js",
     "setupTests.js",
     ".browserslistrc",
-    ".eslintrc"
+    ".eslintrc",
+    ".yarn"
   ],
   "overrides": [{
     "files": ["*.ts", "*.tsx"],
