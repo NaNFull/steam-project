@@ -1,4 +1,4 @@
-import { TradeitAPI } from '@src/api/api.ts';
+import TradeitAPI from '@src/api/tradeitAPI.ts';
 import type { IDataItem, IResponseData } from '@src/pages/tradeit/types';
 import type { ICurrenciesCodes } from '@src/utils/helpers/helperTradeit.ts';
 

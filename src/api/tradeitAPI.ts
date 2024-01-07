@@ -1,12 +1,7 @@
+import API from '@src/api';
 import { pathJoin } from '@src/utils/paths.ts';
 
-export class API {
-  readonly #api = 'http://localhost:3002/api';
-
-  public getAPI = () => this.#api;
-}
-
-export class TradeitAPI extends API {
+export default class TradeitAPI extends API {
   readonly #api: string;
   readonly #pathData: string;
   readonly #pathMyData: string;
