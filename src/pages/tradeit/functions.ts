@@ -17,7 +17,7 @@ export const fetchInventoryData = async () => {
     url.searchParams.set('limit', '500');
     url.searchParams.set('isForStore', '0');
 
-    const response = await fetch(url);
+    const response = await fetch('http://localhost:3002/api/tradeit/data');
 
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);

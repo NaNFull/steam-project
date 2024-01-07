@@ -1,11 +1,9 @@
-import * as path from 'node:path';
+import { pathJoin } from '@src/utils/paths.ts';
 
 export class API {
-  #api = 'http://localhost:3000/api';
+  #api = 'http://localhost:3002/api';
 
-  public getAPI() {
-    return this.#api;
-  }
+  public getAPI = () => this.#api;
 }
 
 export class TradeitAPI extends API {
@@ -17,30 +15,20 @@ export class TradeitAPI extends API {
 
   public constructor() {
     super();
-    this.#api = path.join(this.getAPI(), 'tradeit');
-    this.#pathData = path.join(this.#api, 'data');
-    this.#pathMyData = path.join(this.#api, 'my-data');
-    this.#pathCurrencies = path.join(this.#api, 'exchange-rate');
-    this.#pathImages = path.join(this.#api, 'images');
+    this.#api = pathJoin(this.getAPI(), 'tradeit');
+    this.#pathData = pathJoin(this.#api, 'data');
+    this.#pathMyData = pathJoin(this.#api, 'my-data');
+    this.#pathCurrencies = pathJoin(this.#api, 'exchange-rate');
+    this.#pathImages = pathJoin(this.#api, 'images');
   }
 
-  public getTradeitAPI(): string {
-    return this.#api;
-  }
+  public getTradeitAPI = (): string => this.#api;
 
-  public getPathData(): string {
-    return this.#pathData;
-  }
+  public getPathData = (): string => this.#pathData;
 
-  public getPathMyData(): string {
-    return this.#pathMyData;
-  }
+  public getPathMyData = (): string => this.#pathMyData;
 
-  public getPathCurrencies(): string {
-    return this.#pathCurrencies;
-  }
+  public getPathCurrencies = (): string => this.#pathCurrencies;
 
-  public getPathImages(): string {
-    return this.#pathImages;
-  }
+  public getPathImages = (): string => this.#pathImages;
 }

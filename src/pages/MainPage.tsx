@@ -1,7 +1,7 @@
 import { Box, Grid, Input, MenuItem, Slider, Stack, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { columns } from '@src/pages/settings.tsx';
-import { formatterData } from '@src/pages/tradeit/functions';
+import { fetchInventoryData, formatterData } from '@src/pages/tradeit/functions';
 import * as responseData from '@src/pages/tradeit/temp.json';
 import type { IResponseData } from '@src/pages/tradeit/types';
 import type { ICurrenciesCodes } from '@src/utils/helpers/helperTradeit.ts';
@@ -70,9 +70,18 @@ function MainPage() {
     }
   });
 
+  const onChange = useCallback(() => {
+    fetchInventoryData()
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <Stack className={clsx('main_page', density)} rowGap={3}>
       <Stack aria-label="filters-table" ml={4} mr={4}>
+        <div onClick={onChange}>1123</div>
         <Box ml="auto" sx={{ width: 300 }}>
           <TextField
             select
