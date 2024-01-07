@@ -16,4 +16,3 @@ export const currenciesBase = {
 export type ICurrenciesCodes = keyof typeof currenciesBase;
 
 export const currenciesToKeep = Object.keys(currenciesBase) as ICurrenciesCodes[];
-
