@@ -1,17 +1,17 @@
 import { pathJoin } from '@src/utils/paths.ts';
 
 export class API {
-  #api = 'http://localhost:3002/api';
+  readonly #api = 'http://localhost:3002/api';
 
   public getAPI = () => this.#api;
 }
 
 export class TradeitAPI extends API {
-  #api: string;
-  #pathData: string;
-  #pathMyData: string;
-  #pathCurrencies: string;
-  #pathImages: string;
+  readonly #api: string;
+  readonly #pathData: string;
+  readonly #pathMyData: string;
+  readonly #pathCurrencies: string;
+  readonly #pathImages: string;
 
   public constructor() {
     super();
