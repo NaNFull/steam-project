@@ -1,39 +1,14 @@
-import { Badge, Skeleton } from '@mui/material';
+import { Badge } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import { type Dispatch, memo, type MouseEvent, useCallback, useEffect, useState } from 'react';
-
-type LoadImageFunction = (gameId: number, imageId: string) => Promise<string | undefined>;
-
-const loadImage: LoadImageFunction = async function (gameId, imageId) {
-  try {
-    const url = new URL('http://localhost:3002/api/Tradeit/Images');
-
-    url.searchParams.set('gameId', gameId.toString());
-    url.searchParams.set('imageId', imageId.toString());
-
-    const response = await fetch(url.href);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const blob = await response.blob();
-
-    return blob ? URL.createObjectURL(blob) : undefined;
-  } catch (error) {
-    console.error('Fetch error:', error);
-  }
-};
+import { type Dispatch, memo, type MouseEvent, useCallback, useState } from 'react';
 
 interface SkinImageProps {
-  gameId: number;
-  count: number;
-  imageId?: string;
+  counts: number;
+  imgURL: string;
 }
 
-function SkinImage({ count, gameId, imageId }: SkinImageProps) {
-  const [imgURL, setImgURL] = useState('');
+function SkinImage({ counts, imgURL }: SkinImageProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = useCallback<Dispatch<MouseEvent<HTMLElement>>>(({ currentTarget }) => {
@@ -46,23 +21,9 @@ function SkinImage({ count, gameId, imageId }: SkinImageProps) {
 
   const open = Boolean(anchorEl);
 
-  useEffect(() => {
-    if (imageId) {
-      loadImage(gameId, imageId)
-        .then((response) => {
-          if (response) {
-            setImgURL(response);
-          }
-        })
-        .catch((error) => console.error('Fetch error:', error));
-    }
-  }, [gameId, imageId]);
-
-  if (!imageId) return <Skeleton height={50} variant="circular" width={50} />;
-
   return (
     <Badge
-      badgeContent={count}
+      badgeContent={counts}
       color="error"
       sx={{
         '& > .MuiBadge-badge': {

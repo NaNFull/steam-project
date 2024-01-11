@@ -1,14 +1,15 @@
-import NameColumn from '@src/pages/tradeit/TableRenders/NameColumn.tsx';
-import PriceColumn from '@src/pages/tradeit/TableRenders/PriceColumn.tsx';
-import type { IDataItem } from '@src/pages/tradeit/types.ts';
+import type { IDataItemInventory } from '@src/store/types.store.ts';
 import type { MRT_ColumnDef } from 'material-react-table';
 
-export const columns: MRT_ColumnDef<IDataItem>[] = [
+import NameColumn from './TableRenders/NameColumn.tsx';
+import PriceColumn from './TableRenders/PriceColumn.tsx';
+
+export const columns: MRT_ColumnDef<IDataItemInventory>[] = [
   {
     Cell: ({ row: { original } }) => <NameColumn {...original} />,
     accessorKey: 'name',
-    header: 'Название скина',
-    sortingFn: (rowA, rowB) => rowB.original.count - rowA.original.count
+    header: 'Название предмета',
+    sortingFn: (rowA, rowB) => rowB.original.counts - rowA.original.counts
   },
   {
     Cell: ({
@@ -16,7 +17,7 @@ export const columns: MRT_ColumnDef<IDataItem>[] = [
         original: { priceInCurrency },
         original
       }
-    }) => <PriceColumn {...original} price={priceInCurrency} />,
+    }) => <PriceColumn {...original} price={priceInCurrency[0][1]} />,
     accessorKey: 'priceInCurrency',
     filterFn: 'between',
     filterVariant: 'range',
@@ -30,7 +31,7 @@ export const columns: MRT_ColumnDef<IDataItem>[] = [
         original: { priceTM },
         original
       }
-    }) => <PriceColumn {...original} price={priceTM} />,
+    }) => <PriceColumn {...original} price={priceTM[0][1]} />,
     accessorKey: 'priceTM',
     filterFn: 'between',
     filterVariant: 'range',

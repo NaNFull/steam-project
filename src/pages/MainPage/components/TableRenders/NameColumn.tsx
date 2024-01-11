@@ -1,12 +1,12 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box, IconButton, Link, Stack } from '@mui/material';
-import type { IDataItem } from '@src/pages/tradeit/types.ts';
+import type { IDataItemInventory } from '@src/store/types.store.ts';
 import { useSnackbar } from 'notistack';
 import { useCallback } from 'react';
 
 import SkinImage from './SkinImage.tsx';
 
-function NameColumn({ count, id, imageId, name, steamAppId }: IDataItem) {
+function NameColumn({ counts, id, imgURL, name, steamAppId }: IDataItemInventory) {
   const { enqueueSnackbar } = useSnackbar();
 
   // Сохранение в буфер названия предмета
@@ -25,7 +25,7 @@ function NameColumn({ count, id, imageId, name, steamAppId }: IDataItem) {
         gap: '1rem'
       }}
     >
-      <SkinImage count={count} gameId={steamAppId} imageId={imageId} />
+      <SkinImage counts={counts} imgURL={imgURL} />
       <Stack alignItems="center" direction="row" spacing={1}>
         <Link
           color="inherit"
