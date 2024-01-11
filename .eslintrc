@@ -155,6 +155,7 @@
     "react-perf/jsx-no-jsx-as-prop": "warn"
   },
   "ignorePatterns": [
+    "temp",
     "vite.config.js",
     "reportWebVitals.js",
     "setupTests.js",
