@@ -1,11 +1,11 @@
-import TradeitAPI from '@src/api/tradeitAPI.ts';
+import TradeitAPI from '@src/api/tradeitAPI';
 import type {
   ICurrenciesResponse,
   IResponseData,
   ITradeitFilters,
   ITradeitFiltersCS2,
   ITradeitFiltersRUST
-} from '@src/model/tradeitModel.types.ts';
+} from '@src/model/tradeitModel.types';
 import isNil from 'lodash-es/isNil';
 
 export default class TradeitModel extends TradeitAPI {

@@ -1,9 +1,9 @@
 import './MainPage.scss';
 
 import { Stack } from '@mui/material';
-import MainContent from '@src/pages/MainPage/components/MainContent.tsx';
-import MainFilters from '@src/pages/MainPage/components/MainFilter.tsx';
-import { useSteamStore } from '@src/store/steam.store.ts';
+import MainContent from '@src/pages/MainPage/components/MainContent';
+import MainFilters from '@src/pages/MainPage/components/MainFilter';
+import { useSteamStore } from '@src/store/steam.store';
 import { clsx } from 'clsx';
 
 function MainPage() {

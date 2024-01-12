@@ -1,8 +1,8 @@
-import { useSteamStore } from '@src/store/steam.store.ts';
+import { useSteamStore } from '@src/store/steam.store';
 import constant from 'lodash-es/constant';
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
 
-import { columns } from './settings.tsx';
+import { columns } from './settings';
 
 function MainContent() {
   const data = useSteamStore(({ data }) => data);

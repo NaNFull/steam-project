@@ -1,4 +1,4 @@
-import type { ICurrenciesCodes } from '@src/model/tradeitModel.types.ts';
+import type { ICurrenciesCodes } from '@src/model/tradeitModel.types';
 import type { MRT_DensityState } from 'material-react-table';
 
 interface IInputProps<T = number> {

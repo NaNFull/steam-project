@@ -1,10 +1,10 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box, IconButton, Link, Stack } from '@mui/material';
-import type { IDataItemInventory } from '@src/store/types.store.ts';
+import type { IDataItemInventory } from '@src/store/types.store';
 import { useSnackbar } from 'notistack';
 import { useCallback } from 'react';
 
-import SkinImage from './SkinImage.tsx';
+import SkinImage from './SkinImage';
 
 function NameColumn({ counts, id, imgURL, name, steamAppId }: IDataItemInventory) {
   const { enqueueSnackbar } = useSnackbar();

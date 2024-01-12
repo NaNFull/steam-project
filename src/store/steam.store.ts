@@ -1,6 +1,6 @@
-import TradeitModel from '@src/model/tradeitModel.ts';
-import { templatyMainPageSettings } from '@src/pages/MainPage/templatyMainPage.ts';
-import type { ISteamState, ISteamStore } from '@src/store/types.store.ts';
+import TradeitModel from '@src/model/tradeitModel';
+import { templatyMainPageSettings } from '@src/pages/MainPage/templatyMainPage';
+import type { ISteamState, ISteamStore } from '@src/store/types.store';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 

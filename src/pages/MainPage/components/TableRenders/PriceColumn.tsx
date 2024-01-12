@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
-import { currenciesSymbol } from '@src/model/tradeitModel.types.ts';
+import { currenciesSymbol } from '@src/model/tradeitModel.types';
 
-import type { PriceColumnProps } from './renders.types.ts';
+import type { PriceColumnProps } from './renders.types';
 
 function PriceColumn({ currency, price, priceUSD, remainder }: PriceColumnProps) {
   return (

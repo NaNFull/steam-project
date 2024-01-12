@@ -1,5 +1,5 @@
 import API from '@src/api';
-import { pathJoin } from '@src/utils/paths.ts';
+import { pathJoin } from '@src/utils/paths';
 
 export default class TradeitAPI extends API {
   readonly #api: string;
