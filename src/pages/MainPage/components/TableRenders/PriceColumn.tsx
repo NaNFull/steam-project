@@ -2,8 +2,8 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Box, Stack } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import { currenciesSymbol } from '@src/model/tradeitModel.types';
 import type { IPriceHistory } from '@src/store/types.store';
+import { formatterValue } from '@src/utils/baseUtils';
 import dayjs from 'dayjs';
 import type { MouseEventHandler } from 'react';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -38,8 +38,8 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
     }
 
     return {
-      memoPrice: `${price.toFixed(remainder)} ${currenciesSymbol[currency]}`,
-      memoPriceUSD: `(${priceUSD.toFixed(2)} $)`,
+      memoPrice: formatterValue(price, currency, remainder),
+      memoPriceUSD: formatterValue(priceUSD, 'USD'),
       memoPrices: transformedData.slice(0, 5)
     };
   }, [currency, price, priceUSD, prices, remainder]);
@@ -63,7 +63,7 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
         <Typography variant="body1">
           {memoPrice}
           <Typography component="span" ml={0.5} variant="body2">
-            {memoPriceUSD}
+            ({memoPriceUSD})
           </Typography>
         </Typography>
         <ArrowDropDownIcon transform={`rotate(${open ? 180 : 0})`} />
@@ -86,8 +86,8 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
             <Typography component="strong">{dayjs(date).format('DD.MM.YY')}</Typography>
             {prices.map((item) => {
               const { id, priceUSD } = item;
-              const tempPrice = `${item[type].toFixed(remainder)} ${currenciesSymbol[currency]}`;
-              const tempPriceUSD = `(${priceUSD.toFixed(2)} $)`;
+              const tempPrice = formatterValue(item[type], currency, remainder);
+              const tempPriceUSD = formatterValue(priceUSD, 'USD');
 
               return (
                 <Typography key={id} variant="body1">
@@ -95,7 +95,7 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
                     {dayjs(item.date).format('HH:mm')} &mdash; {tempPrice}
                   </Typography>
                   <Typography component="span" ml={0.5} variant="body2">
-                    {tempPriceUSD}
+                    ({tempPriceUSD})
                   </Typography>
                 </Typography>
               );

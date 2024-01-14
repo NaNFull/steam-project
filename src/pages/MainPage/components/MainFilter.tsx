@@ -1,8 +1,8 @@
 import { Box, Button, Grid, Input, MenuItem, Slider, Stack, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import type { ICurrenciesCodes } from '@src/model/tradeitModel.types';
-import { currenciesToKeep } from '@src/model/tradeitModel.types';
 import { useSteamStore } from '@src/store/steam.store';
+import type { ICurrenciesCodes } from '@src/utils/typesUtils';
+import { currenciesToKeep } from '@src/utils/typesUtils';
 import type { ChangeEventHandler } from 'react';
 import { useCallback } from 'react';
 
