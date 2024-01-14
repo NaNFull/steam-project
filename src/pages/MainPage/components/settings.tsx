@@ -14,10 +14,10 @@ export const columns: MRT_ColumnDef<IDataItemInventory>[] = [
   {
     Cell: ({
       row: {
-        original: { priceInCurrency },
-        original
+        original,
+        original: { priceInCurrency }
       }
-    }) => <PriceColumn {...original} price={priceInCurrency[0][1]} />,
+    }) => <PriceColumn {...original} price={priceInCurrency} type="priceInCurrency" />,
     accessorKey: 'priceInCurrency',
     filterFn: 'between',
     filterVariant: 'range',
@@ -28,10 +28,10 @@ export const columns: MRT_ColumnDef<IDataItemInventory>[] = [
   {
     Cell: ({
       row: {
-        original: { priceTM },
-        original
+        original,
+        original: { priceTM }
       }
-    }) => <PriceColumn {...original} price={priceTM[0][1]} />,
+    }) => <PriceColumn {...original} price={priceTM} type="priceTM" />,
     accessorKey: 'priceTM',
     filterFn: 'between',
     filterVariant: 'range',

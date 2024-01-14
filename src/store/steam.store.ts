@@ -34,7 +34,6 @@ export const useSteamStore = create<ISteamStore>()(
           gameId: 252_490,
           limit: 50
         });
-        // return;
 
         if (response) {
           set({ data: response.items });

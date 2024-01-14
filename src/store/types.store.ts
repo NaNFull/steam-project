@@ -9,9 +9,10 @@ export interface IDataItemInventory {
   name: string;
   counts: number;
   steamAppId: number;
-  priceUSD: [number, number][];
-  priceInCurrency: [number, number][];
-  priceTM: [number, number][];
+  prices: IPriceHistory[];
+  priceUSD: number;
+  priceInCurrency: number;
+  priceTM: number;
   currency: ICurrenciesCodes;
   remainder: number;
   imgURL: string;
@@ -30,6 +31,14 @@ export interface IDataItemInventory {
   currentStock?: number;
 }
 
+export interface IPriceHistory {
+  id: number;
+  date: number;
+  priceUSD: number;
+  priceInCurrency: number;
+  priceTM: number;
+}
+
 export interface ISteamState {
   data: IDataItemInventory[];
   density: MRT_DensityState;
@@ -40,7 +49,7 @@ export interface ISteamState {
 }
 
 export interface ISteamStore extends ISteamState {
-  getTradeitData: DispatchWithoutAction;
+  getTradeitData: () => Promise<void>;
   setDensity: OnChangeFn<MRT_DensityState>;
   setProfitPercent: Dispatch<number>;
   setCurrency: Dispatch<ICurrenciesCodes>;
