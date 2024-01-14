@@ -16,6 +16,7 @@ export interface ITransformedPrice {
   prices: IPriceHistory[];
 }
 
+// TODO: Разделить на компоненты
 function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: PriceColumnProps) {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
@@ -39,7 +40,7 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
     return {
       memoPrice: `${price.toFixed(remainder)} ${currenciesSymbol[currency]}`,
       memoPriceUSD: `(${priceUSD.toFixed(2)} $)`,
-      memoPrices: transformedData
+      memoPrices: transformedData.slice(0, 5)
     };
   }, [currency, price, priceUSD, prices, remainder]);
   const handlePopoverOpen = useCallback<MouseEventHandler<HTMLElement>>(({ currentTarget }) => {
@@ -51,7 +52,14 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
 
   return (
     <>
-      <Stack alignItems="center" aria-describedby={popoverID} columnGap={1} direction="row" onClick={handlePopoverOpen}>
+      <Stack
+        alignItems="center"
+        aria-describedby={popoverID}
+        columnGap={1}
+        direction="row"
+        sx={{ cursor: 'pointer' }}
+        onClick={handlePopoverOpen}
+      >
         <Typography variant="body1">
           {memoPrice}
           <Typography component="span" ml={0.5} variant="body2">
@@ -70,7 +78,7 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
         }}
         onClose={handlePopoverClose}
       >
-        <Typography fontSize="medium" sx={{ p: 1 }} variant="subtitle2">
+        <Typography fontWeight="bold" sx={{ p: 1 }} variant="subtitle2">
           История:
         </Typography>
         {memoPrices.map(({ date, id, prices }) => (

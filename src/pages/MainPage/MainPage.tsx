@@ -9,10 +9,10 @@ import { useEffectOnce } from 'usehooks-ts';
 
 function MainPage() {
   const density = useSteamStore(({ density }) => density);
-  const getTradeitData = useSteamStore(({ getTradeitData }) => getTradeitData);
+  const getData = useSteamStore(({ getData }) => getData);
 
   useEffectOnce(() => {
-    getTradeitData().catch((error) => console.log('Error useEffectOnce', error));
+    getData().catch((error) => console.log('Error useEffectOnce', error));
   });
 
   return (

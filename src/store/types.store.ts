@@ -50,6 +50,7 @@ export interface ISteamState {
 
 export interface ISteamStore extends ISteamState {
   getTradeitData: () => Promise<void>;
+  getData: () => Promise<void>;
   setDensity: OnChangeFn<MRT_DensityState>;
   setProfitPercent: Dispatch<number>;
   setCurrency: Dispatch<ICurrenciesCodes>;

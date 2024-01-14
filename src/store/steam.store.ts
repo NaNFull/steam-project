@@ -1,3 +1,4 @@
+import BaseModel from '@src/model/baseModel';
 import TradeitModel from '@src/model/tradeitModel';
 import { templatyMainPageSettings } from '@src/pages/MainPage/templatyMainPage';
 import type { ISteamState, ISteamStore } from '@src/store/types.store';
@@ -15,7 +16,7 @@ const InitialState: ISteamState = {
 
 export const useSteamStore = create<ISteamStore>()(
   devtools(
-    (set, _get) => ({
+    (set, get) => ({
       ...InitialState,
       getCurrencies: async () => {
         const model = new TradeitModel();
@@ -25,6 +26,18 @@ export const useSteamStore = create<ISteamStore>()(
         if (response) {
           const { rates } = response;
           set({ currencies: rates });
+        }
+      },
+      getData: async () => {
+        const { currency, profitPercent, remainder } = get();
+        const model = new BaseModel();
+        const response = await model.postData({
+          currency,
+          profitPercent,
+          remainder
+        });
+        if (response) {
+          console.log(response);
         }
       },
       getTradeitData: async () => {
