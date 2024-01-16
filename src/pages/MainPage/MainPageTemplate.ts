@@ -14,7 +14,7 @@ interface MainPageSettings {
   remainderSettings: IInputProps;
 }
 
-export const templatyMainPageSettings: MainPageSettings = {
+export const MainPageTemplate: MainPageSettings = {
   currency: 'RUB',
   density: 'spacious',
   profitPercentSettings: {

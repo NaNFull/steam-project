@@ -1,4 +1,5 @@
 import TradeitAPI from '@src/api/tradeitAPI';
+import BaseModel from '@src/model/baseModel';
 import type {
   IResponseData,
   ITradeitFilters,
@@ -18,6 +19,21 @@ export default class TradeitModel extends TradeitAPI {
   public getRustId = (category: string) => this.#rustCategory.indexOf(category);
 
   public getData = async (filters: ITradeitFilters) => {
+    const model = new BaseModel();
+    const url = this.onChangeDataBase(filters);
+
+    return model.fetch<IResponseData>(url);
+  };
+
+  public getCurrencies = async () => {
+    const model = new BaseModel();
+    const url = this.getPathCurrencies();
+
+    return model.fetch<ICurrenciesResponse>(url);
+  };
+
+  public onChangeDataBase = (filters: ITradeitFilters) => {
+    const url = new URL(this.getPathData());
     const {
       fresh = true,
       gameId = 252_490,
@@ -29,7 +45,6 @@ export default class TradeitModel extends TradeitAPI {
       searchValue,
       sortType = 'Popularity'
     } = filters;
-    const url = new URL(this.getPathData());
 
     url.searchParams.set('gameId', gameId.toString());
     url.searchParams.set('offset', offset.toString());
@@ -52,32 +67,7 @@ export default class TradeitModel extends TradeitAPI {
       }
     }
 
-    try {
-      const response = await fetch(url.href);
-
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-
-      return (await response.json()) as IResponseData;
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
-  };
-
-  // TODO: Доработка
-  public getCurrencies = async () => {
-    try {
-      const response = await fetch(this.getPathCurrencies());
-
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-
-      return (await response.json()) as ICurrenciesResponse;
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-    }
+    return url.href;
   };
 
   public onChangeDataCS2 = (

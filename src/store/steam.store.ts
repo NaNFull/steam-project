@@ -1,22 +1,22 @@
-import BaseModel from '@src/model/baseModel';
+import SteamModel from '@src/model/steamModel';
 import TradeitModel from '@src/model/tradeitModel';
-import { templatyMainPageSettings } from '@src/pages/MainPage/templatyMainPage';
+import { MainPageTemplate } from '@src/pages/MainPage/MainPageTemplate';
 import type { ISteamState, ISteamStore } from '@src/store/types.store';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 const InitialState: ISteamState = {
   currencies: undefined,
-  currency: templatyMainPageSettings.currency,
+  currency: MainPageTemplate.currency,
   data: [],
-  density: templatyMainPageSettings.density,
+  density: MainPageTemplate.density,
   profitPercent: 0.7,
   remainder: 2
 };
 
 export const useSteamStore = create<ISteamStore>()(
   devtools(
-    (set, get) => ({
+    (set, _get) => ({
       ...InitialState,
       getCurrencies: async () => {
         const model = new TradeitModel();
@@ -29,13 +29,15 @@ export const useSteamStore = create<ISteamStore>()(
         }
       },
       getData: async () => {
-        const { currency, profitPercent, remainder } = get();
-        const model = new BaseModel();
-        const response = await model.postData({
-          currency,
-          profitPercent,
-          remainder
-        });
+        // const { currency, profitPercent, remainder } = get();
+        const model = new SteamModel();
+        // const params = JSON.stringify({
+        //   currency,
+        //   profitPercent,
+        //   remainder
+        // });
+        const response = await model.getData();
+
         if (response) {
           console.log(response);
         }
