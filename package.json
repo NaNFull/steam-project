@@ -104,7 +104,6 @@
     "eslint-plugin-unused-imports": "~3.x.x",
     "eslint-plugin-you-dont-need-lodash-underscore": "~6.x.x",
     "eslint-plugin-you-dont-need-momentjs": "~1.x.x",
-    "eslint-webpack-plugin": "~4.x.x",
     "jsdom": "~23.x.x",
     "postcss": "~8.x.x",
     "postcss-import": "~15.x.x",
