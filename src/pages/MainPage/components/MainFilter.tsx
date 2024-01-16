@@ -47,7 +47,6 @@ function MainFilters() {
     },
     [setProfitPercent]
   );
-  console.log('currencies', currencies);
 
   return (
     <Stack aria-label="filters-table" ml={4} mr={4}>

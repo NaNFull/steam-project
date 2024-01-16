@@ -1,4 +1,4 @@
-import type { ICurrencies, ICurrenciesCodes } from '@src/model/tradeitModel.types';
+import type { ICurrencies, ICurrenciesCodes } from '@src/utils/typesUtils';
 import type { OnChangeFn } from '@tanstack/react-table';
 import type { MRT_DensityState } from 'material-react-table';
 import type { Dispatch, DispatchWithoutAction } from 'react';
