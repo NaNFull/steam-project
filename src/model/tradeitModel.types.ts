@@ -1,6 +1,6 @@
 import type { IDataItemInventory } from '@src/store/types.store';
 
-export interface IResponseData {
+export interface IDataResponse {
   items: IDataItemInventory[];
 }
 

@@ -1,7 +1,7 @@
 import TradeitAPI from '@src/api/tradeitAPI';
 import BaseModel from '@src/model/baseModel';
 import type {
-  IResponseData,
+  IDataResponse,
   ITradeitFilters,
   ITradeitFiltersCS2,
   ITradeitFiltersRUST
@@ -22,7 +22,7 @@ export default class TradeitModel extends TradeitAPI {
     const model = new BaseModel();
     const url = this.onChangeDataBase(filters);
 
-    return model.fetch<IResponseData>(url);
+    return model.fetch<IDataResponse>(url);
   };
 
   public getCurrencies = async () => {

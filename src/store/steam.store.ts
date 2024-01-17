@@ -39,7 +39,7 @@ export const useSteamStore = create<ISteamStore>()(
         const response = await model.getData();
 
         if (response) {
-          console.log(response);
+          set({ data: response.items });
         }
       },
       getTradeitData: async () => {
