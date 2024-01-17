@@ -2,7 +2,7 @@ import './MainPage.scss';
 
 import { Stack } from '@mui/material';
 import MainContent from '@src/pages/MainPage/components/MainContent';
-import MainFilters from '@src/pages/MainPage/components/MainFilter';
+import MainFilters from '@src/pages/MainPage/components/MainFilters';
 import { useSteamStore } from '@src/store/steam.store';
 import { clsx } from 'clsx';
 import { useEffectOnce } from 'usehooks-ts';

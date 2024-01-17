@@ -10,8 +10,8 @@ const InitialState: ISteamState = {
   currency: MainPageTemplate.currency,
   data: [],
   density: MainPageTemplate.density,
-  profitPercent: 0.7,
-  remainder: 2
+  profitPercent: MainPageTemplate.profitPercentSettings.value,
+  remainder: MainPageTemplate.remainderSettings.value
 };
 
 export const useSteamStore = create<ISteamStore>()(
@@ -39,9 +39,8 @@ export const useSteamStore = create<ISteamStore>()(
       getTradeitData: async () => {
         const model = new TradeitModel();
         const response = await model.getData({
-          fresh: true,
           gameId: 252_490,
-          limit: 50
+          limit: 500
         });
 
         if (response) {
@@ -53,7 +52,7 @@ export const useSteamStore = create<ISteamStore>()(
         const model = new SteamModel();
         const params = JSON.stringify({
           currency,
-          profitPercent,
+          profitPercent: profitPercent / 100,
           remainder
         });
         const response = await model.postData(params);

@@ -16,11 +16,11 @@ interface MainPageSettings {
 
 export const MainPageTemplate: MainPageSettings = {
   currency: 'RUB',
-  density: 'spacious',
+  density: 'compact',
   profitPercentSettings: {
-    max: 0.9,
-    min: 0.3,
-    value: 0.7 // Рекомендуемое 0.7
+    max: 90,
+    min: 30,
+    value: 70 // Рекомендуемое 70 %
   },
   remainderSettings: {
     max: 20,
