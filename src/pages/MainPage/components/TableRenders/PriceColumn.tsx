@@ -85,7 +85,8 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
           <Box key={id} rowGap={1} sx={{ p: 1 }}>
             <Typography component="strong">{dayjs(date).format('DD.MM.YY')}</Typography>
             {prices.map((item) => {
-              const { id, priceUSD } = item;
+              const { id, priceUSDTM } = item;
+              const priceUSD = type === 'priceTM' ? priceUSDTM : item.priceUSD;
               const tempPrice = formatterValue(item[type], currency, remainder);
               const tempPriceUSD = formatterValue(priceUSD, 'USD');
 

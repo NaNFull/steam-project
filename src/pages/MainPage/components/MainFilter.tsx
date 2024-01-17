@@ -15,7 +15,7 @@ function MainFilters() {
   const setRemainder = useSteamStore(({ setRemainder }) => setRemainder);
   const getTradeitData = useSteamStore(({ getTradeitData }) => getTradeitData);
   const currencies = useSteamStore(({ currencies }) => currencies);
-  const getCurrencies = useSteamStore(({ getCurrencies }) => getCurrencies);
+  const postData = useSteamStore(({ postData }) => postData);
 
   const onProfitPercent = useCallback(
     (_event: Event, value: number | number[]) => {
@@ -52,9 +52,6 @@ function MainFilters() {
     <Stack aria-label="filters-table" ml={4} mr={4}>
       <Button variant="outlined" onClick={getTradeitData}>
         Загрузить данные с Tradeit
-      </Button>
-      <Button variant="outlined" onClick={getCurrencies}>
-        Обновить валюты
       </Button>
       <Box ml="auto" sx={{ width: 300 }}>
         <TextField
@@ -126,6 +123,9 @@ function MainFilters() {
             />
           </Grid>
         </Grid>
+        <Button variant="contained" onClick={postData}>
+          Обновить таблицу
+        </Button>
       </Box>
     </Stack>
   );

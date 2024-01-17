@@ -11,6 +11,7 @@ export interface IDataItemInventory {
   steamAppId: number;
   prices: IPriceHistory[];
   priceUSD: number;
+  priceUSDTM: number;
   priceInCurrency: number;
   priceTM: number;
   currency: ICurrenciesCodes;
@@ -35,6 +36,7 @@ export interface IPriceHistory {
   id: number;
   date: number;
   priceUSD: number;
+  priceUSDTM: number;
   priceInCurrency: number;
   priceTM: number;
 }
@@ -51,6 +53,7 @@ export interface ISteamState {
 export interface ISteamStore extends ISteamState {
   getTradeitData: () => Promise<void>;
   getData: () => Promise<void>;
+  postData: () => Promise<void>;
   setDensity: OnChangeFn<MRT_DensityState>;
   setProfitPercent: Dispatch<number>;
   setCurrency: Dispatch<ICurrenciesCodes>;

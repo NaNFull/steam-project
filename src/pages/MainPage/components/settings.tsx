@@ -29,9 +29,9 @@ export const columns: MRT_ColumnDef<IDataItemInventory>[] = [
     Cell: ({
       row: {
         original,
-        original: { priceTM }
+        original: { priceTM, priceUSDTM }
       }
-    }) => <PriceColumn {...original} price={priceTM} type="priceTM" />,
+    }) => <PriceColumn {...original} price={priceTM} priceUSD={priceUSDTM} type="priceTM" />,
     accessorKey: 'priceTM',
     filterFn: 'between',
     filterVariant: 'range',

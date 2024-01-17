@@ -16,7 +16,7 @@ const InitialState: ISteamState = {
 
 export const useSteamStore = create<ISteamStore>()(
   devtools(
-    (set, _get) => ({
+    (set, get) => ({
       ...InitialState,
       getCurrencies: async () => {
         const model = new TradeitModel();
@@ -29,13 +29,7 @@ export const useSteamStore = create<ISteamStore>()(
         }
       },
       getData: async () => {
-        // const { currency, profitPercent, remainder } = get();
         const model = new SteamModel();
-        // const params = JSON.stringify({
-        //   currency,
-        //   profitPercent,
-        //   remainder
-        // });
         const response = await model.getData();
 
         if (response) {
@@ -49,6 +43,20 @@ export const useSteamStore = create<ISteamStore>()(
           gameId: 252_490,
           limit: 50
         });
+
+        if (response) {
+          set({ data: response.items });
+        }
+      },
+      postData: async () => {
+        const { currency, profitPercent, remainder } = get();
+        const model = new SteamModel();
+        const params = JSON.stringify({
+          currency,
+          profitPercent,
+          remainder
+        });
+        const response = await model.postData(params);
 
         if (response) {
           set({ data: response.items });
