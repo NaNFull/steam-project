@@ -18,6 +18,7 @@ function NameColumn({ counts, id, imgURL, name, steamAppId }: IDataItemInventory
   return (
     <Box
       key={id}
+      aria-label="Предмет"
       className="name_column"
       sx={{
         alignItems: 'center',

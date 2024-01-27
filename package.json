@@ -29,6 +29,7 @@
     "@doctormckay/steam-webapi": "~1.x.x",
     "@emotion/react": "~11.x.x",
     "@emotion/styled": "~11.x.x",
+    "@mui/base": "^5.0.0-beta.32",
     "@mui/icons-material": "~5.x.x",
     "@mui/material": "~5.x.x",
     "@mui/x-date-pickers": "~6.x.x",

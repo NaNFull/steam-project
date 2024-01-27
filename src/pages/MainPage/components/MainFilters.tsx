@@ -5,7 +5,7 @@ import TradeitFilters from '@src/pages/MainPage/components/Filters/TradeitFilter
 
 function MainFilters() {
   return (
-    <Stack aria-label="filters-table" pl={1} pr={1} pt={1}>
+    <Stack aria-label="Фильтры по таблице" pl={1} pr={1} pt={1}>
       <Grid container spacing={2}>
         <Grid xs={8}>
           <TradeitFilters />

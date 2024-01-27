@@ -18,7 +18,7 @@ import { MainPageTemplate } from '@src/pages/MainPage/MainPageTemplate';
 import { useSteamStore } from '@src/store/steam.store';
 import type { ICurrenciesCodes } from '@src/utils/typesUtils';
 import { currenciesToKeep } from '@src/utils/typesUtils';
-import type { ChangeEventHandler } from 'react';
+import type { ChangeEventHandler, FocusEventHandler } from 'react';
 import { useCallback } from 'react';
 import { useBoolean } from 'usehooks-ts';
 
@@ -58,19 +58,45 @@ function BaseFilters() {
     },
     [setRemainder]
   );
+  const blurInputRemainder = useCallback<FocusEventHandler<HTMLInputElement>>(
+    ({ target: { value } }) => {
+      const tempValue = value === '' ? 0 : Number(value);
+      const { max, min } = MainPageTemplate.remainderSettings;
+
+      if (tempValue < min) {
+        setRemainder(min);
+      } else if (max < tempValue) {
+        setRemainder(max);
+      }
+    },
+    [setRemainder]
+  );
   const handleInputProfit = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => {
       setProfitPercent(value === '' ? 0 : Number(value));
     },
     [setProfitPercent]
   );
+  const blurInputProfit = useCallback<FocusEventHandler<HTMLInputElement>>(
+    ({ target: { value } }) => {
+      const tempValue = value === '' ? 0 : Number(value);
+      const { max, min } = MainPageTemplate.profitPercentSettings;
+
+      if (tempValue < min) {
+        setProfitPercent(min);
+      } else if (max < tempValue) {
+        setProfitPercent(max);
+      }
+    },
+    [setProfitPercent]
+  );
 
   return (
-    <Card>
+    <Card aria-label="Взаимодействие с таблицей">
       <CardHeader
         title="Настройки данных таблицы"
         action={
-          <ExpandMore aria-expanded={expanded} aria-label="show more" expand={expanded} onClick={toggleExpanded}>
+          <ExpandMore aria-expanded={expanded} aria-label="Скрыть карточку" expand={expanded} onClick={toggleExpanded}>
             <ExpandMoreIcon />
           </ExpandMore>
         }
@@ -101,36 +127,24 @@ function BaseFilters() {
             </Grid>
             <Grid xs={4}>
               <TextField
-                fullWidth
+                id="input-remainder"
                 label="Дробная часть"
-                size="small"
                 value={remainder}
                 variant="standard"
-                inputProps={{
-                  max: MainPageTemplate.remainderSettings.max,
-                  min: MainPageTemplate.remainderSettings.min,
-                  step: 2,
-                  type: 'number'
-                }}
+                onBlur={blurInputRemainder}
                 onChange={handleInputRemainder}
               />
             </Grid>
             <Grid xs={4}>
               <TextField
-                fullWidth
+                id="input-profit"
                 label="Профит"
-                size="small"
                 value={profitPercent}
                 variant="standard"
-                inputProps={{
-                  max: MainPageTemplate.profitPercentSettings.max,
-                  min: MainPageTemplate.profitPercentSettings.min,
-                  step: 5,
-                  type: 'number'
-                }}
                 InputProps={{
-                  startAdornment: <InputAdornment position="start">%</InputAdornment>
+                  endAdornment: <InputAdornment position="start">%</InputAdornment>
                 }}
+                onBlur={blurInputProfit}
                 onChange={handleInputProfit}
               />
             </Grid>

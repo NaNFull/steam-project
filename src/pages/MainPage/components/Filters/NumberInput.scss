@@ -1,0 +1,8 @@
+.base-NumberInput-root.input-adornment {
+  column-gap: 0;
+  grid-template-columns: auto 1fr auto 19px;
+
+  button[class*=base-NumberInput] {
+    grid-column: 4/5;
+  }
+}

@@ -41,3 +41,5 @@ export interface ITradeitFiltersSTEAM extends ITradeitFilterBase {
 }
 
 export type ITradeitFilters = ITradeitFiltersCS2 | ITradeitFiltersRUST | ITradeitFiltersTF2 | ITradeitFiltersSTEAM;
+
+export type ITradeitGameIds = ITradeitFilters['gameId'];

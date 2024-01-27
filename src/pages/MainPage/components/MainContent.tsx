@@ -1,6 +1,7 @@
 import { useSteamStore } from '@src/store/steam.store';
 import constant from 'lodash-es/constant';
 import { MaterialReactTable, useMaterialReactTable } from 'material-react-table';
+import { MRT_Localization_RU } from 'material-react-table/locales/ru';
 
 import { columns } from './settings';
 
@@ -13,6 +14,7 @@ function MainContent() {
     columns,
     data: data,
     isMultiSortEvent: constant(true),
+    localization: MRT_Localization_RU,
     maxMultiSortColCount: 3,
     onDensityChange: setDensity,
     state: {
