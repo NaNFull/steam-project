@@ -23,7 +23,7 @@ export const MainPageTemplate: MainPageSettings = {
     value: 70 // Рекомендуемое 70 %
   },
   remainderSettings: {
-    max: 20,
+    max: 15,
     min: 0,
     value: 2
   }

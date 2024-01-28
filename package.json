@@ -46,6 +46,7 @@
     "react-dom": "~18.x.x",
     "react-helmet": "~6.x.x",
     "react-icons": "~4.x.x",
+    "react-number-format": "^5.3.1",
     "react-parallax-tilt": "~1.x.x",
     "react-router-dom": "~6.x.x",
     "steam-totp": "~2.x.x",

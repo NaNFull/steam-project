@@ -70,14 +70,14 @@ export default defineConfig(({ mode }) => {
       alias: { '@src': path.resolve(__dirname, 'src') }
     },
     build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "react-vendor": ["react", "react-dom", "react-router-dom"],
+          },
         },
       },
     },
-  },
     test: {
       globals: true,
       coverage: {

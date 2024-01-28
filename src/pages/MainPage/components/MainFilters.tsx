@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import BaseFilters from '@src/pages/MainPage/components/Filters/BaseFilters';
-import TradeitFilters from '@src/pages/MainPage/components/Filters/TradeitFilters';
+import BaseFilters from '@src/pages/MainPage/components/BaseFilters';
+import TradeitFilters from '@src/pages/MainPage/components/TradeitFilters';
 
 function MainFilters() {
   return (
