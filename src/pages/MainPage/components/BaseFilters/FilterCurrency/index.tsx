@@ -1,5 +1,7 @@
 import { MenuItem, TextField } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { useSteamStore } from '@src/store/steam.store';
+import { formatterValue } from '@src/utils/baseUtils';
 import type { ICurrenciesCodes } from '@src/utils/typesUtils';
 import { currenciesToKeep } from '@src/utils/typesUtils';
 import type { ChangeEventHandler } from 'react';
@@ -29,9 +31,11 @@ function FilterCurrency() {
     >
       {Object.entries(currencies ?? { RUB: 100 })
         .filter(([currency]) => currenciesToKeep.includes(currency as ICurrenciesCodes))
-        .map(([value, rate]) => (
-          <MenuItem key={value} sx={{ justifyContent: 'end' }} value={value}>
-            {`${rate} ${value}`}
+        .map(([rate, value]) => (
+          <MenuItem key={rate} sx={{ justifyContent: 'end' }} value={rate}>
+            <Typography style={{ fontFamily: 'Roboto Mono, monospace' }}>
+              {`${formatterValue(value, rate as ICurrenciesCodes, 5)} | ${rate}`}
+            </Typography>
           </MenuItem>
         ))}
     </TextField>

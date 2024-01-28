@@ -1,6 +1,6 @@
 import SteamAPI from '@src/api/steamAPI';
 import BaseModel from '@src/model/baseModel';
-import type { IDataResponse } from '@src/model/steamModel.types';
+import type { IDataResponse, ISteamFilters } from '@src/model/steamModel.types';
 
 export default class SteamModel extends SteamAPI {
   public constructor() {
@@ -19,5 +19,12 @@ export default class SteamModel extends SteamAPI {
     const url = this.getPathData();
 
     return model.post<IDataResponse>(url, params);
+  };
+
+  public getFilters = async () => {
+    const model = new BaseModel();
+    const url = this.getPathFilters();
+
+    return model.fetch<ISteamFilters>(url);
   };
 }

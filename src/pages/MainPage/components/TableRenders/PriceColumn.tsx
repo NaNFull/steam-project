@@ -60,8 +60,10 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
         sx={{ cursor: 'pointer' }}
         onClick={handlePopoverOpen}
       >
-        <Typography variant="body1">
-          {memoPrice}
+        <Typography flexDirection="inherit" variant="body1">
+          <Typography component="span" variant="body2">
+            {memoPrice}
+          </Typography>
           <Typography component="span" ml={0.5} variant="body2">
             ({memoPriceUSD})
           </Typography>

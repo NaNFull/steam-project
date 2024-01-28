@@ -6,12 +6,16 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 const InitialState: ISteamState = {
+  cacheTradeit: false,
   currencies: undefined,
-  currency: MainPageTemplate.currency,
+  currency: 'RUB',
   data: [],
   density: MainPageTemplate.density,
-  profitPercent: MainPageTemplate.profitPercentSettings.value,
-  remainder: MainPageTemplate.remainderSettings.value
+  gameId: 'ALL',
+  maxPrice: 100_000,
+  minPrice: 0,
+  profitPercent: 70,
+  remainder: 2
 };
 
 export const useSteamStore = create<ISteamStore>()(
@@ -36,6 +40,15 @@ export const useSteamStore = create<ISteamStore>()(
           set({ data: response.items });
         }
       },
+      getFilters: async () => {
+        const model = new SteamModel();
+        const response = await model.getFilters();
+
+        if (response) {
+          console.log('response', response);
+          set({ ...response });
+        }
+      },
       getTradeitData: async () => {
         const model = new TradeitModel();
         const response = await model.getData({
@@ -48,19 +61,25 @@ export const useSteamStore = create<ISteamStore>()(
         }
       },
       postData: async () => {
-        const { currency, profitPercent, remainder } = get();
+        const { cacheTradeit, currency, gameId, maxPrice, minPrice, profitPercent, remainder } = get();
         const model = new SteamModel();
         const params = JSON.stringify({
+          cacheTradeit,
           currency,
-          profitPercent: profitPercent / 100,
+          gameId,
+          maxPrice,
+          minPrice,
+          profitPercent,
           remainder
         });
+        console.log('re', params);
         const response = await model.postData(params);
 
         if (response) {
           set({ data: response.items });
         }
       },
+      setCacheTradeit: (value) => set({ cacheTradeit: value }),
       setCurrency: (value) => set({ currency: value }),
       setDensity: (value) => {
         if (typeof value === 'string') {
@@ -69,6 +88,9 @@ export const useSteamStore = create<ISteamStore>()(
 
         return value;
       },
+      setGameId: (value) => set({ gameId: value }),
+      setMaxPrice: (value) => set({ maxPrice: value }),
+      setMinPrice: (value) => set({ minPrice: value }),
       setProfitPercent: (value) => set({ profitPercent: value }),
       setRemainder: (value) => set({ remainder: value })
     }),

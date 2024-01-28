@@ -4,6 +4,7 @@ import type { ICurrenciesCodes } from './typesUtils';
 export const currenciesLocale = {
   AUD: 'en-AU',
   BRL: 'pt-BR',
+  CNY: 'zh-CN',
   EUR: 'en-EU',
   GBP: 'en-GB',
   HKD: 'zh-HK',

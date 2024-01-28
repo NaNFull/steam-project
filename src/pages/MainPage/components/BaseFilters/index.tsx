@@ -16,11 +16,19 @@ import FilterPrices from '@src/pages/MainPage/components/BaseFilters/FilterPrice
 import FilterProfit from '@src/pages/MainPage/components/BaseFilters/FilterProfit';
 import FilterRemainder from '@src/pages/MainPage/components/BaseFilters/FilterRemainder';
 import { useSteamStore } from '@src/store/steam.store';
+import { useEffect } from 'react';
 import { useBoolean } from 'usehooks-ts';
 
 function BaseFilters() {
-  const { toggle: toggleExpanded, value: expanded } = useBoolean(false);
+  const { toggle: toggleExpanded, value: expanded } = useBoolean(true);
+  const getFilters = useSteamStore(({ getFilters }) => getFilters);
   const postData = useSteamStore(({ postData }) => postData);
+
+  useEffect(() => {
+    if (expanded) {
+      getFilters().catch((error) => console.log('Error useEffectOnce', error));
+    }
+  }, [expanded, getFilters]);
 
   return (
     <Card aria-label="Взаимодействие с таблицей">

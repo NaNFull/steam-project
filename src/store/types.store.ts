@@ -1,3 +1,4 @@
+import type { ITradeitGameIds } from '@src/model/tradeitModel.types';
 import type { ICurrencies, ICurrenciesCodes } from '@src/utils/typesUtils';
 import type { OnChangeFn } from '@tanstack/react-table';
 import type { MRT_DensityState } from 'material-react-table';
@@ -42,21 +43,53 @@ export interface IPriceHistory {
 }
 
 export interface ISteamState {
+  gameId: ITradeitGameIds;
   data: IDataItemInventory[];
   density: MRT_DensityState;
   profitPercent: number;
   currency: ICurrenciesCodes;
   remainder: number;
   currencies?: ICurrencies;
+  minPrice: number;
+  maxPrice: number;
+  cacheTradeit: boolean;
 }
 
-export interface ISteamStore extends ISteamState {
+export interface ISteamSetters {
+  setGameId: Dispatch<ITradeitGameIds>;
+  setMinPrice: Dispatch<number>;
+  setMaxPrice: Dispatch<number>;
+  setProfitPercent: Dispatch<number>;
+  setRemainder: Dispatch<number>;
+  setCurrency: Dispatch<ICurrenciesCodes>;
+  setCacheTradeit: Dispatch<boolean>;
+}
+
+export interface ISteamStore extends ISteamState, ISteamSetters {
   getTradeitData: () => Promise<void>;
+  getFilters: () => Promise<void>;
   getData: () => Promise<void>;
   postData: () => Promise<void>;
   setDensity: OnChangeFn<MRT_DensityState>;
-  setProfitPercent: Dispatch<number>;
-  setCurrency: Dispatch<ICurrenciesCodes>;
-  setRemainder: Dispatch<number>;
   getCurrencies: DispatchWithoutAction;
+}
+
+export interface ITradeitState {
+  gameId: ITradeitGameIds;
+  minPrice: number;
+  maxPrice: number;
+  minFloat: number;
+  maxFloat: number;
+}
+
+export interface ITradeitSetters {
+  setGameId: Dispatch<ITradeitGameIds>;
+  setMinPrice: Dispatch<number>;
+  setMaxPrice: Dispatch<number>;
+  setMinFloat: Dispatch<number>;
+  setMaxFloat: Dispatch<number>;
+}
+
+export interface ITradeitStore extends ITradeitState, ITradeitSetters {
+  getTradeitData: () => Promise<void>;
 }
