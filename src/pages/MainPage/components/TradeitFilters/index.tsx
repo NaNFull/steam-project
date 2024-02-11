@@ -4,14 +4,15 @@ import { selectedGame } from '@src/pages/MainPage/components/BaseFilters/FilterG
 import CardHeaderFilters from '@src/pages/MainPage/components/TradeitFilters/CardHeaderFilters';
 import FilterFloat from '@src/pages/MainPage/components/TradeitFilters/FilterFloat';
 import FilterGame from '@src/pages/MainPage/components/TradeitFilters/FilterGame';
+import FilterOffset from '@src/pages/MainPage/components/TradeitFilters/FilterOffset';
 import FilterPrices from '@src/pages/MainPage/components/TradeitFilters/FilterPrices';
-import { useSteamStore } from '@src/store/steam.store';
+import { useTradeitStore } from '@src/store/tradeit.store';
 import { useBoolean, useLocalStorage } from 'usehooks-ts';
 
 function TradeitFilters() {
   const [gameId] = useLocalStorage<ITradeitGameIds>('filterGameIdTradeit', selectedGame[1].gameId);
   const { toggle: toggleExpanded, value: expanded } = useBoolean(true);
-  const getTradeitData = useSteamStore(({ getTradeitData }) => getTradeitData);
+  const getTradeitData = useTradeitStore(({ getTradeitData }) => getTradeitData);
 
   return (
     <Card aria-label="Взаимодействие с сайтом Tradeit">
@@ -22,6 +23,7 @@ function TradeitFilters() {
             <FilterGame />
             <FilterPrices />
             {gameId === 730 && <FilterFloat />}
+            <FilterOffset />
           </Stack>
         </CardContent>
         <CardActions sx={{ justifyContent: 'end' }}>

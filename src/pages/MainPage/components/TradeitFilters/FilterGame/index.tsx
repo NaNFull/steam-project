@@ -1,11 +1,11 @@
 import { Box, InputLabel, MenuItem, TextField } from '@mui/material';
-import type { ITradeitGameIds } from '@src/model/tradeitModel.types';
-import { selectedGame } from '@src/pages/MainPage/components/BaseFilters/FilterGame/gameTemplate';
+import type { ITradeitFilters } from '@src/model/tradeitModel.types';
+import { selectedGame } from '@src/pages/MainPage/components/TradeitFilters/FilterGame/gameTemplate';
 import { type ChangeEventHandler, useCallback } from 'react';
 import { useLocalStorage } from 'usehooks-ts';
 
 function FilterGame() {
-  const [gameId, setGameId] = useLocalStorage<ITradeitGameIds>('filterGameIdTradeit', selectedGame[1].gameId);
+  const [gameId, setGameId] = useLocalStorage<ITradeitFilters['gameId']>('filterGameIdTradeit', selectedGame[1].gameId);
 
   const onSetGameId = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => {

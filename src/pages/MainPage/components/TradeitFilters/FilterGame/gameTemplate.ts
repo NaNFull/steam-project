@@ -1,5 +1,4 @@
-import type { ITradeitGameIds } from '@src/model/tradeitModel.types';
-import ALLIcon from '@src/pages/MainPage/components/BaseFilters/FilterGame/GameIcons/ALLIcon';
+import type { ITradeitFilters } from '@src/model/tradeitModel.types';
 import CS2Icon from '@src/pages/MainPage/components/BaseFilters/FilterGame/GameIcons/CS2Icon';
 import RUSTIcon from '@src/pages/MainPage/components/BaseFilters/FilterGame/GameIcons/RUSTIcon';
 import STEAMIcon from '@src/pages/MainPage/components/BaseFilters/FilterGame/GameIcons/STEAMIcon';
@@ -8,18 +7,12 @@ import type { FC } from 'react';
 
 export interface SelectedGame {
   id: number;
-  gameId: ITradeitGameIds;
+  gameId: ITradeitFilters['gameId'];
   name: string;
   ComponentIcon: FC;
 }
 
 export const selectedGame: SelectedGame[] = [
-  {
-    ComponentIcon: ALLIcon,
-    gameId: 'ALL',
-    id: 0,
-    name: 'ALL'
-  },
   {
     ComponentIcon: CS2Icon,
     gameId: 730,

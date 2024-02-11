@@ -4,34 +4,46 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
 const InitialState: ITradeitState = {
-  gameId: 'ALL',
+  gameId: 730,
   maxFloat: 1,
   maxPrice: 100_000,
   minFloat: 0,
-  minPrice: 0
+  minPrice: 0,
+  offset: 500
 };
 
-export const useSteamStore = create<ITradeitStore>()(
+export const useTradeitStore = create<ITradeitStore>()(
   devtools(
-    (set, _get) => ({
+    (set, get) => ({
       ...InitialState,
-      getTradeitData: async () => {
+      getTradeitData: () => {
+        const { gameId, maxFloat, maxPrice, minFloat, minPrice, offset } = get();
+        let tempOffset = 0;
         const model = new TradeitModel();
-        const response = await model.getData({
-          gameId: 252_490,
-          limit: 500
-        });
 
-        if (response) {
-          set({ data: response.items });
-        }
+        setInterval(async () => {
+          const response = await model.getData({
+            gameId,
+            limit: 500,
+            maxFloat,
+            maxPrice,
+            minFloat,
+            minPrice,
+            offset: tempOffset
+          });
+
+          if (response && response.items.length === 500 && tempOffset < offset) {
+            tempOffset += 500;
+          }
+        }, 1000);
       },
       setGameId: (value) => set({ gameId: value }),
       setMaxFloat: (value) => set({ maxFloat: value }),
       setMaxPrice: (value) => set({ maxPrice: value }),
       setMinFloat: (value) => set({ minFloat: value }),
-      setMinPrice: (value) => set({ minPrice: value })
+      setMinPrice: (value) => set({ minPrice: value }),
+      setOffset: (value) => set({ offset: value })
     }),
-    { name: 'Test' }
+    { name: 'Tradeit' }
   )
 );

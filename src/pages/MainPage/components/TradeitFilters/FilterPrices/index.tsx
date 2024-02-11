@@ -6,14 +6,16 @@ import type { OnValueChange } from 'react-number-format/types/types';
 import { useLocalStorage } from 'usehooks-ts';
 
 function FilterPrices() {
-  const [minPrice, setMinPrice] = useLocalStorage<number>('minPriceTradeit', 0);
-  const [maxPrice, setMaxPrice] = useLocalStorage<number>('maxPriceTradeit', 100_000);
+  const [minPrice, setMinPriceLocal] = useLocalStorage<number>('minPriceTradeit', 0);
+  const [maxPrice, setMaxPriceLocal] = useLocalStorage<number>('maxPriceTradeit', 100_000);
 
   const onValueMinPrice = useCallback<OnValueChange>(
     ({ value }) => {
-      setMinPrice(Number.parseFloat(value));
+      const tempValue = Number.parseFloat(value);
+
+      setMinPriceLocal(tempValue);
     },
-    [setMinPrice]
+    [setMinPriceLocal]
   );
 
   const blurValueMinPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -29,16 +31,18 @@ function FilterPrices() {
       // Ограничим максимальным значением 100 000
       clampedValue = Math.min(clampedValue, 100_000);
 
-      setMinPrice(clampedValue);
+      setMinPriceLocal(clampedValue);
     },
-    [maxPrice, setMinPrice]
+    [maxPrice, setMinPriceLocal]
   );
 
   const onValueMaxPrice = useCallback<OnValueChange>(
     ({ value }) => {
-      setMaxPrice(Number.parseFloat(value));
+      const tempValue = Number.parseFloat(value);
+
+      setMaxPriceLocal(tempValue);
     },
-    [setMaxPrice]
+    [setMaxPriceLocal]
   );
 
   const blurValueMaxPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -54,9 +58,9 @@ function FilterPrices() {
       // Ограничим максимальным значением 100 000
       clampedValue = Math.min(clampedValue, 100_000);
 
-      setMaxPrice(clampedValue);
+      setMaxPriceLocal(clampedValue);
     },
-    [minPrice, setMaxPrice]
+    [minPrice, setMaxPriceLocal]
   );
 
   return (

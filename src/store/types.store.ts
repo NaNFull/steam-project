@@ -1,4 +1,4 @@
-import type { ITradeitGameIds } from '@src/model/tradeitModel.types';
+import type { ITradeitFilters, ITradeitGameIds } from '@src/model/tradeitModel.types';
 import type { ICurrencies, ICurrenciesCodes } from '@src/utils/typesUtils';
 import type { OnChangeFn } from '@tanstack/react-table';
 import type { MRT_DensityState } from 'material-react-table';
@@ -66,7 +66,6 @@ export interface ISteamSetters {
 }
 
 export interface ISteamStore extends ISteamState, ISteamSetters {
-  getTradeitData: () => Promise<void>;
   getFilters: () => Promise<void>;
   getData: () => Promise<void>;
   postData: () => Promise<void>;
@@ -75,21 +74,23 @@ export interface ISteamStore extends ISteamState, ISteamSetters {
 }
 
 export interface ITradeitState {
-  gameId: ITradeitGameIds;
+  gameId: ITradeitFilters['gameId'];
   minPrice: number;
   maxPrice: number;
   minFloat: number;
   maxFloat: number;
+  offset: number;
 }
 
 export interface ITradeitSetters {
-  setGameId: Dispatch<ITradeitGameIds>;
+  setGameId: Dispatch<ITradeitFilters['gameId']>;
   setMinPrice: Dispatch<number>;
   setMaxPrice: Dispatch<number>;
   setMinFloat: Dispatch<number>;
   setMaxFloat: Dispatch<number>;
+  setOffset: Dispatch<number>;
 }
 
 export interface ITradeitStore extends ITradeitState, ITradeitSetters {
-  getTradeitData: () => Promise<void>;
+  getTradeitData: DispatchWithoutAction;
 }

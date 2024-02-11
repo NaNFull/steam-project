@@ -49,17 +49,6 @@ export const useSteamStore = create<ISteamStore>()(
           set({ ...response });
         }
       },
-      getTradeitData: async () => {
-        const model = new TradeitModel();
-        const response = await model.getData({
-          gameId: 252_490,
-          limit: 500
-        });
-
-        if (response) {
-          set({ data: response.items });
-        }
-      },
       postData: async () => {
         const { cacheTradeit, currency, gameId, maxPrice, minPrice, profitPercent, remainder } = get();
         const model = new SteamModel();
@@ -94,6 +83,6 @@ export const useSteamStore = create<ISteamStore>()(
       setProfitPercent: (value) => set({ profitPercent: value }),
       setRemainder: (value) => set({ remainder: value })
     }),
-    { name: 'Test' }
+    { name: 'Steam' }
   )
 );
