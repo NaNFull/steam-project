@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
-import { usePresent } from '@src/pages/MainPage/components/BaseFilters/FilterRemainder/hooks/usePresent';
 import LabelTooltip from '@src/ui/mui/LabelTooltip';
+import { usePresent } from '@src/view/MainPage/BaseFilters/FilterRemainder/hooks/usePresent';
 import { NumericFormat } from 'react-number-format';
 
 function FilterRemainder() {

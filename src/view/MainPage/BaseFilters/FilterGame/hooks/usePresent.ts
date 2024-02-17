@@ -1,17 +1,17 @@
-import { selectedGame } from '@src/pages/MainPage/components/BaseFilters/FilterGame/gameTemplate';
-import { useTradeitStore } from '@src/store/tradeit.store';
+import { useMainStore } from '@src/store/main.store';
+import { selectedGame } from '@src/view/MainPage/BaseFilters/FilterGame/gameTemplate';
 import { type ChangeEventHandler, useCallback } from 'react';
 
 export const usePresent = () => {
-  const gameId = useTradeitStore(({ gameId }) => gameId);
-  const setGameId = useTradeitStore(({ setGameId }) => setGameId);
-  const games = selectedGame.slice(1);
+  const gameId = useMainStore(({ gameId }) => gameId);
+  const setGameId = useMainStore(({ setGameId }) => setGameId);
 
   const onSetGameId = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => {
-      const tempValue = Number.parseInt(value, 10);
+      const tempValue = value && value !== 'ALL' ? Number.parseInt(value, 10) : 'ALL';
 
       switch (tempValue) {
+        case 'ALL':
         case 730:
         case 252_490:
         case 440:
@@ -22,10 +22,9 @@ export const usePresent = () => {
     },
     [setGameId]
   );
-
   return {
-    data: games,
-    defaultValue: games[0].gameId,
+    data: selectedGame,
+    defaultValue: selectedGame[0].gameId,
     gameId,
     onSetGameId
   };

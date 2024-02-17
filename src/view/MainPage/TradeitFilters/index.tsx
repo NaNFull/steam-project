@@ -1,9 +1,9 @@
 import { Button, Card, CardActions, CardContent, Collapse, Stack } from '@mui/material';
-import FilterFloat from '@src/pages/MainPage/components/TradeitFilters/FilterFloat';
-import FilterGame from '@src/pages/MainPage/components/TradeitFilters/FilterGame';
-import FilterOffset from '@src/pages/MainPage/components/TradeitFilters/FilterOffset';
-import FilterPrices from '@src/pages/MainPage/components/TradeitFilters/FilterPrices';
-import Header from '@src/pages/MainPage/components/TradeitFilters/Header';
+import FilterFloat from '@src/view/MainPage/TradeitFilters/FilterFloat';
+import FilterGame from '@src/view/MainPage/TradeitFilters/FilterGame';
+import FilterOffset from '@src/view/MainPage/TradeitFilters/FilterOffset';
+import FilterPrices from '@src/view/MainPage/TradeitFilters/FilterPrices';
+import Header from '@src/view/MainPage/TradeitFilters/Header';
 
 import { usePresent } from './hooks/usePresent';
 function TradeitFilters() {

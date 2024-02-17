@@ -1,4 +1,4 @@
-import type { SelectedGame } from '@src/pages/MainPage/components/BaseFilters/FilterGame/types';
+import type { SelectedGame } from '@src/view/MainPage/BaseFilters/FilterGame/types';
 
 import ALLIcon from './GameIcons/ALLIcon';
 import CS2Icon from './GameIcons/CS2Icon';

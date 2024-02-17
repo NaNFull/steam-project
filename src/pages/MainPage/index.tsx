@@ -2,20 +2,15 @@ import './style.scss';
 
 import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import BaseFilters from '@src/pages/MainPage/components/BaseFilters';
-import MainContent from '@src/pages/MainPage/components/MainContent';
-import TradeitFilters from '@src/pages/MainPage/components/TradeitFilters';
-import { useMainStore } from '@src/store/main.store';
+import BaseFilters from '@src/view/MainPage/BaseFilters';
+import MainContent from '@src/view/MainPage/MainContent';
+import TradeitFilters from '@src/view/MainPage/TradeitFilters';
 import { clsx } from 'clsx';
-import { useEffect } from 'react';
+
+import { usePresent } from './hooks/usePresent';
 
 function MainPage() {
-  const density = useMainStore(({ density }) => density);
-  const getData = useMainStore(({ getData }) => getData);
-
-  useEffect(() => {
-    getData().catch((error) => console.log('Error useEffectOnce', error));
-  }, [getData]);
+  const { density } = usePresent();
 
   return (
     <Stack className={clsx('main_page', density)} rowGap={3}>

@@ -1,5 +1,5 @@
-import type { ITransformedPrice } from '@src/pages/MainPage/components/TableRenders/PriceColumn/types';
 import { formatterValue } from '@src/utils/baseUtils';
+import type { ITransformedPrice } from '@src/view/MainPage/TableRenders/PriceColumn/types';
 import dayjs from 'dayjs';
 import { type MouseEventHandler, useCallback, useMemo, useState } from 'react';
 
