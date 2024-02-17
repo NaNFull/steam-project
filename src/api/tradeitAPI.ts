@@ -1,29 +1,30 @@
 import API from '@src/api';
-import { pathJoin } from '@src/utils/paths';
+import urlJoin from 'url-join';
 
 export default class TradeitAPI extends API {
-  readonly #api: string;
-  readonly #pathData: string;
-  readonly #pathMyData: string;
-  readonly #pathCurrencies: string;
-  readonly #pathImages: string;
+  readonly #origin = new URL('http://localhost:3002');
+  readonly #api = new URL(this.#origin);
+  readonly #dataURL = new URL(this.#origin);
+  readonly #myDataURL = new URL(this.#origin);
+  readonly #currenciesURL = new URL(this.#origin);
+  readonly #imagesURL = new URL(this.#origin);
 
   public constructor() {
     super();
-    this.#api = pathJoin(this.getPathAPI(), 'tradeit');
-    this.#pathData = pathJoin(this.#api, 'data');
-    this.#pathMyData = pathJoin(this.#api, 'my-data');
-    this.#pathCurrencies = pathJoin(this.#api, 'exchange-rate');
-    this.#pathImages = pathJoin(this.#api, 'images');
+    this.#api.href = urlJoin(this.getAPI().href, 'tradeit');
+    this.#dataURL.href = urlJoin(this.#api.href, 'data');
+    this.#myDataURL.href = urlJoin(this.#api.href, 'my-data');
+    this.#currenciesURL.href = urlJoin(this.#api.href, 'exchange-rate');
+    this.#imagesURL.href = urlJoin(this.#api.href, 'images');
   }
 
-  public getPathTradeitAPI = (): string => this.#api;
+  public getURLTradeitAPI = () => this.#api;
 
-  public getPathData = (): string => this.#pathData;
+  public getURLData = () => this.#dataURL;
 
-  public getPathMyData = (): string => this.#pathMyData;
+  public getURLMyData = () => this.#myDataURL;
 
-  public getPathCurrencies = (): string => this.#pathCurrencies;
+  public getURLCurrencies = () => this.#currenciesURL;
 
-  public getPathImages = (): string => this.#pathImages;
+  public getURLImages = () => this.#imagesURL;
 }

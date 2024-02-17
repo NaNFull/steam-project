@@ -1,14 +1,12 @@
-import { pathJoin } from '@src/utils/paths';
-
 export default class API {
-  readonly #origin = 'http://localhost:3002';
-  readonly #api: string;
+  readonly #origin = new URL('http://localhost:3002');
+  readonly #api: URL;
 
   public constructor() {
-    this.#api = pathJoin(this.#origin, 'api');
+    this.#api = new URL('api', this.#origin);
   }
 
-  public getPathOrigin = () => this.#origin;
+  public getOriginURL = () => this.#origin;
 
-  public getPathAPI = () => this.#api;
+  public getAPI = () => this.#api;
 }

@@ -1,21 +1,22 @@
 import API from '@src/api';
-import { pathJoin } from '@src/utils/paths';
+import urlJoin from 'url-join';
 
 export default class SteamAPI extends API {
-  readonly #api: string;
-  readonly #pathData: string;
-  readonly #pathFilters: string;
+  readonly #origin = new URL('http://localhost:3002');
+  readonly #api = new URL(this.#origin);
+  readonly #urlData = new URL(this.#origin);
+  readonly #urlFilters = new URL(this.#origin);
 
   public constructor() {
     super();
-    this.#api = pathJoin(this.getPathAPI(), 'inventory');
-    this.#pathData = pathJoin(this.#api, 'data');
-    this.#pathFilters = pathJoin(this.#api, 'filters');
+    this.#api.href = urlJoin(this.getAPI().href, 'inventory');
+    this.#urlData.href = urlJoin(this.#api.href, 'data');
+    this.#urlFilters.href = urlJoin(this.#api.href, 'filters');
   }
 
-  public getPathSteamAPI = (): string => this.#api;
+  public getUrlSteamAPI = () => this.#api;
 
-  public getPathData = (): string => this.#pathData;
+  public getUrlData = () => this.#urlData;
 
-  public getPathFilters = (): string => this.#pathFilters;
+  public getUrlFilters = () => this.#urlFilters;
 }
