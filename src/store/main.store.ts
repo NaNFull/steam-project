@@ -87,6 +87,7 @@ export const useMainStore = create<ISteamStore>()(
     ),
     {
       name: 'main-store',
+      partialize: ({ data, ...state }) => state,
       storage: createJSONStorage(() => localStorage)
     }
   )
