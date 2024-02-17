@@ -1,41 +1,22 @@
 import { Box, InputLabel, MenuItem, TextField } from '@mui/material';
-import type { ITradeitFilters } from '@src/model/tradeitModel.types';
-import { selectedGame } from '@src/pages/MainPage/components/TradeitFilters/FilterGame/gameTemplate';
-import { type ChangeEventHandler, useCallback } from 'react';
-import { useLocalStorage } from 'usehooks-ts';
+
+import { usePresent } from './hooks/usePresent';
 
 function FilterGame() {
-  const [gameId, setGameId] = useLocalStorage<ITradeitFilters['gameId']>('filterGameIdTradeit', selectedGame[1].gameId);
-
-  const onSetGameId = useCallback<ChangeEventHandler<HTMLInputElement>>(
-    ({ target: { value } }) => {
-      const tempValue = Number.parseInt(value, 10);
-
-      switch (tempValue) {
-        case 730:
-        case 252_490:
-        case 440:
-        case 753: {
-          setGameId(tempValue);
-        }
-      }
-    },
-    [setGameId]
-  );
-
+  const { data, defaultValue, gameId, onSetGameId } = usePresent();
   return (
     <Box>
       <InputLabel htmlFor="formatted-text-mask-input">Игра</InputLabel>
       <TextField
         select
-        defaultValue={selectedGame[1].gameId}
+        defaultValue={defaultValue}
         id="standard-select-currency"
         sx={{ width: 120 }}
         value={gameId}
         variant="standard"
         onChange={onSetGameId}
       >
-        {selectedGame.slice(1).map(({ ComponentIcon, gameId, name }) => (
+        {data.map(({ ComponentIcon, gameId, name }) => (
           <MenuItem key={gameId} value={gameId}>
             <Box alignItems="center" columnGap={1} display="flex" sx={{ '& img': { borderRadius: 1 } }}>
               <ComponentIcon />

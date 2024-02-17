@@ -1,14 +1,14 @@
 import { Box, InputLabel, Stack, TextField } from '@mui/material';
-import { useSteamStore } from '@src/store/steam.store';
+import { useMainStore } from '@src/store/main.store';
 import { type ChangeEventHandler, useCallback } from 'react';
 import { NumericFormat } from 'react-number-format';
 import type { OnValueChange } from 'react-number-format/types/types';
 
 function FilterPrices() {
-  const minPrice = useSteamStore(({ minPrice }) => minPrice);
-  const setMinPrice = useSteamStore(({ setMinPrice }) => setMinPrice);
-  const maxPrice = useSteamStore(({ maxPrice }) => maxPrice);
-  const setMaxPrice = useSteamStore(({ setMaxPrice }) => setMaxPrice);
+  const minPrice = useMainStore(({ minPrice }) => minPrice);
+  const setMinPrice = useMainStore(({ setMinPrice }) => setMinPrice);
+  const maxPrice = useMainStore(({ maxPrice }) => maxPrice);
+  const setMaxPrice = useMainStore(({ setMaxPrice }) => setMaxPrice);
 
   const onValueMinPrice = useCallback<OnValueChange>(
     ({ value }) => {

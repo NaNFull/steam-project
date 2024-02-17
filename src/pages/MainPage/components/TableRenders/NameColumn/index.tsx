@@ -1,19 +1,12 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { Box, IconButton, Link, Stack } from '@mui/material';
 import type { IDataItemInventory } from '@src/store/types.store';
-import { useSnackbar } from 'notistack';
-import { useCallback } from 'react';
 
-import SkinImage from './SkinImage';
+import SkinImage from '../SkinImage';
+import { usePresent } from './hooks/usePresent';
 
 function NameColumn({ counts, id, imgURL, name, steamAppId }: IDataItemInventory) {
-  const { enqueueSnackbar } = useSnackbar();
-
-  // Сохранение в буфер названия предмета
-  const handleClick = useCallback(async () => {
-    await window.navigator.clipboard.writeText(name);
-    enqueueSnackbar(`Скопировано в буфер: ${name}`, { variant: 'success' });
-  }, [enqueueSnackbar, name]);
+  const { handleClick } = usePresent(name);
 
   return (
     <Box

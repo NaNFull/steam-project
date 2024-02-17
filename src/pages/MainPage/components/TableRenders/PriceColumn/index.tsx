@@ -2,53 +2,27 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Box, Stack } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import type { IPriceHistory } from '@src/store/types.store';
 import { formatterValue } from '@src/utils/baseUtils';
 import dayjs from 'dayjs';
-import type { MouseEventHandler } from 'react';
-import { memo, useCallback, useMemo, useState } from 'react';
+import { memo } from 'react';
 
-import type { PriceColumnProps } from './renders.types';
+import { usePresent } from './hooks/usePresent';
+import type { Props } from './types';
 
-export interface ITransformedPrice {
-  id: number;
-  date: number;
-  prices: IPriceHistory[];
-}
-
-// TODO: Разделить на компоненты
-function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: PriceColumnProps) {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const open = Boolean(anchorEl);
-  const popoverID = open ? 'simple-popover' : undefined;
-
-  const { memoPrice, memoPriceUSD, memoPrices } = useMemo(() => {
-    const transformedData: ITransformedPrice[] = [];
-
-    for (const item of prices) {
-      const startOfDay = dayjs(item.date).millisecond(0).second(0).minute(0).hour(0).valueOf();
-
-      const existingItem = transformedData.find(({ date }) => date === startOfDay);
-
-      if (existingItem) {
-        existingItem.prices.push(item);
-      } else {
-        transformedData.push({ date: startOfDay, id: startOfDay, prices: [item] });
-      }
-    }
-
-    return {
-      memoPrice: formatterValue(price, currency, remainder),
-      memoPriceUSD: formatterValue(priceUSD, 'USD'),
-      memoPrices: transformedData.slice(0, 5)
-    };
-  }, [currency, price, priceUSD, prices, remainder]);
-  const handlePopoverOpen = useCallback<MouseEventHandler<HTMLElement>>(({ currentTarget }) => {
-    setAnchorEl(currentTarget);
-  }, []);
-  const handlePopoverClose = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
+function PriceColumn(props: Props) {
+  const {
+    anchorEl,
+    currency,
+    data,
+    handlePopoverClose,
+    handlePopoverOpen,
+    memoPrice,
+    memoPriceUSD,
+    open,
+    popoverID,
+    remainder,
+    type
+  } = usePresent(props);
 
   return (
     <>
@@ -83,7 +57,7 @@ function PriceColumn({ currency, price, priceUSD, prices, remainder, type }: Pri
         <Typography fontWeight="bold" sx={{ p: 1 }} variant="subtitle2">
           История:
         </Typography>
-        {memoPrices.map(({ date, id, prices }) => (
+        {data.map(({ date, id, prices }) => (
           <Box key={id} rowGap={1} sx={{ p: 1 }}>
             <Typography component="strong">{dayjs(date).format('DD.MM.YY')}</Typography>
             {prices.map((item) => {

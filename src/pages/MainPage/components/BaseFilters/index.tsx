@@ -9,30 +9,21 @@ import {
   FormGroup,
   Stack
 } from '@mui/material';
-import CardHeaderFilters from '@src/pages/MainPage/components/BaseFilters/CardHeaderFilters';
 import FilterCurrency from '@src/pages/MainPage/components/BaseFilters/FilterCurrency';
 import FilterGame from '@src/pages/MainPage/components/BaseFilters/FilterGame';
 import FilterPrices from '@src/pages/MainPage/components/BaseFilters/FilterPrices';
 import FilterProfit from '@src/pages/MainPage/components/BaseFilters/FilterProfit';
 import FilterRemainder from '@src/pages/MainPage/components/BaseFilters/FilterRemainder';
-import { useSteamStore } from '@src/store/steam.store';
-import { useEffect } from 'react';
-import { useBoolean } from 'usehooks-ts';
+import Header from '@src/pages/MainPage/components/BaseFilters/Header';
+
+import { usePresent } from './hooks/usePresent';
 
 function BaseFilters() {
-  const { toggle: toggleExpanded, value: expanded } = useBoolean(true);
-  const getFilters = useSteamStore(({ getFilters }) => getFilters);
-  const postData = useSteamStore(({ postData }) => postData);
-
-  useEffect(() => {
-    if (expanded) {
-      getFilters().catch((error) => console.log('Error useEffectOnce', error));
-    }
-  }, [expanded, getFilters]);
+  const { expanded, postData, toggleExpanded } = usePresent();
 
   return (
     <Card aria-label="Взаимодействие с таблицей">
-      <CardHeaderFilters toggle={toggleExpanded} value={expanded} />
+      <Header toggle={toggleExpanded} value={expanded} />
       <Collapse unmountOnExit in={expanded} timeout="auto">
         <CardContent>
           <Stack direction="row" spacing={1}>

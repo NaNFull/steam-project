@@ -1,7 +1,7 @@
 import TradeitModel from '@src/model/tradeitModel';
 import type { ITradeitState, ITradeitStore } from '@src/store/types.store';
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 const InitialState: ITradeitState = {
   gameId: 730,
@@ -13,31 +13,37 @@ const InitialState: ITradeitState = {
 };
 
 export const useTradeitStore = create<ITradeitStore>()(
-  devtools(
-    (set, get) => ({
-      ...InitialState,
-      getTradeitData: async () => {
-        const { gameId, maxFloat, maxPrice, minFloat, minPrice, offset } = get();
-        const model = new TradeitModel();
-        const temp = {
-          gameId,
-          limit: 500,
-          maxFloat,
-          maxPrice,
-          minFloat,
-          minPrice,
-          offset: offset
-        };
-        const response = await model.getData(temp);
-        console.log('getTradeitData', response);
-      },
-      setGameId: (value) => set({ gameId: value }),
-      setMaxFloat: (value) => set({ maxFloat: value }),
-      setMaxPrice: (value) => set({ maxPrice: value }),
-      setMinFloat: (value) => set({ minFloat: value }),
-      setMinPrice: (value) => set({ minPrice: value }),
-      setOffset: (value) => set({ offset: value })
-    }),
-    { name: 'Tradeit' }
+  persist(
+    devtools(
+      (set, get) => ({
+        ...InitialState,
+        getTradeitData: async () => {
+          const { gameId, maxFloat, maxPrice, minFloat, minPrice, offset } = get();
+          const model = new TradeitModel();
+          const temp = {
+            gameId,
+            limit: 500,
+            maxFloat,
+            maxPrice,
+            minFloat,
+            minPrice,
+            offset: offset
+          };
+          const response = await model.getData(temp);
+          console.log('getTradeitData', response);
+        },
+        setGameId: (value) => set({ gameId: value }),
+        setMaxFloat: (value) => set({ maxFloat: value }),
+        setMaxPrice: (value) => set({ maxPrice: value }),
+        setMinFloat: (value) => set({ minFloat: value }),
+        setMinPrice: (value) => set({ minPrice: value }),
+        setOffset: (value) => set({ offset: value })
+      }),
+      { name: 'Tradeit' }
+    ),
+    {
+      name: 'tradeit-store',
+      storage: createJSONStorage(() => localStorage)
+    }
   )
 );

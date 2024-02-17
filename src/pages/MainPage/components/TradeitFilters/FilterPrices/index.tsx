@@ -1,67 +1,10 @@
 import { Box, InputLabel, Stack, TextField } from '@mui/material';
-import type { FocusEventHandler } from 'react';
-import { useCallback } from 'react';
 import { NumericFormat } from 'react-number-format';
-import type { OnValueChange } from 'react-number-format/types/types';
-import { useLocalStorage } from 'usehooks-ts';
+
+import { usePresent } from './hooks/usePresent';
 
 function FilterPrices() {
-  const [minPrice, setMinPriceLocal] = useLocalStorage<number>('minPriceTradeit', 0);
-  const [maxPrice, setMaxPriceLocal] = useLocalStorage<number>('maxPriceTradeit', 100_000);
-
-  const onValueMinPrice = useCallback<OnValueChange>(
-    ({ value }) => {
-      const tempValue = Number.parseFloat(value);
-
-      setMinPriceLocal(tempValue);
-    },
-    [setMinPriceLocal]
-  );
-
-  const blurValueMinPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
-    ({ target: { value } }) => {
-      const formatValue = value.replace('$', '').replaceAll(',', '');
-      const tempValue = Number.parseFloat(formatValue);
-      // Установим минимальное значение в 0
-      let clampedValue = Math.max(tempValue, 0);
-
-      // Если есть максимальное значение, ограничим им
-      clampedValue = Math.min(clampedValue, maxPrice);
-
-      // Ограничим максимальным значением 100 000
-      clampedValue = Math.min(clampedValue, 100_000);
-
-      setMinPriceLocal(clampedValue);
-    },
-    [maxPrice, setMinPriceLocal]
-  );
-
-  const onValueMaxPrice = useCallback<OnValueChange>(
-    ({ value }) => {
-      const tempValue = Number.parseFloat(value);
-
-      setMaxPriceLocal(tempValue);
-    },
-    [setMaxPriceLocal]
-  );
-
-  const blurValueMaxPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
-    ({ target: { value } }) => {
-      const formatValue = value.replace('$', '').replaceAll(',', '');
-      const tempValue = Number.parseFloat(formatValue);
-      // Установим максимальное значение в 100_000
-      let clampedValue = Math.min(tempValue, 100_000);
-
-      // Если есть минимальное значение, ограничим им
-      clampedValue = Math.max(minPrice, clampedValue);
-
-      // Ограничим максимальным значением 100 000
-      clampedValue = Math.min(clampedValue, 100_000);
-
-      setMaxPriceLocal(clampedValue);
-    },
-    [minPrice, setMaxPriceLocal]
-  );
+  const { blurValueMaxPrice, blurValueMinPrice, maxPrice, minPrice, onValueMaxPrice, onValueMinPrice } = usePresent();
 
   return (
     <Box>

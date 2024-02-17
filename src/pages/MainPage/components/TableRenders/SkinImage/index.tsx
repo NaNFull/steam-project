@@ -1,25 +1,13 @@
 import { Badge } from '@mui/material';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
-import { type Dispatch, memo, type MouseEvent, useCallback, useState } from 'react';
+import { memo } from 'react';
 
-interface SkinImageProps {
-  counts: number;
-  imgURL: string;
-}
+import { usePresent } from './hooks/usePresent';
+import type { Props } from './types';
 
-function SkinImage({ counts, imgURL }: SkinImageProps) {
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
-  const handlePopoverOpen = useCallback<Dispatch<MouseEvent<HTMLElement>>>(({ currentTarget }) => {
-    setAnchorEl(currentTarget);
-  }, []);
-
-  const handlePopoverClose = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
-
-  const open = Boolean(anchorEl);
+function SkinImage({ counts, imgURL }: Props) {
+  const { anchorEl, handlePopoverClose, handlePopoverOpen, open } = usePresent();
 
   return (
     <Badge

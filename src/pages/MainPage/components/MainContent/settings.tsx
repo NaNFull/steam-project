@@ -1,8 +1,8 @@
 import type { IDataItemInventory } from '@src/store/types.store';
 import type { MRT_ColumnDef } from 'material-react-table';
 
-import NameColumn from './TableRenders/NameColumn';
-import PriceColumn from './TableRenders/PriceColumn';
+import NameColumn from '../TableRenders/NameColumn';
+import PriceColumn from '../TableRenders/PriceColumn';
 
 export const columns: MRT_ColumnDef<IDataItemInventory>[] = [
   {
