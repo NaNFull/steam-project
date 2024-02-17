@@ -16,26 +16,20 @@ export const useTradeitStore = create<ITradeitStore>()(
   devtools(
     (set, get) => ({
       ...InitialState,
-      getTradeitData: () => {
+      getTradeitData: async () => {
         const { gameId, maxFloat, maxPrice, minFloat, minPrice, offset } = get();
-        let tempOffset = 0;
         const model = new TradeitModel();
-
-        setInterval(async () => {
-          const response = await model.getData({
-            gameId,
-            limit: 500,
-            maxFloat,
-            maxPrice,
-            minFloat,
-            minPrice,
-            offset: tempOffset
-          });
-
-          if (response && response.items.length === 500 && tempOffset < offset) {
-            tempOffset += 500;
-          }
-        }, 1000);
+        const temp = {
+          gameId,
+          limit: 500,
+          maxFloat,
+          maxPrice,
+          minFloat,
+          minPrice,
+          offset: offset
+        };
+        const response = await model.getData(temp);
+        console.log('getTradeitData', response);
       },
       setGameId: (value) => set({ gameId: value }),
       setMaxFloat: (value) => set({ maxFloat: value }),

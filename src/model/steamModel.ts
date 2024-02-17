@@ -9,22 +9,22 @@ export default class SteamModel extends SteamAPI {
 
   public getData = async () => {
     const model = new BaseModel();
-    const url = this.getPathData();
+    const url = this.getUrlData();
 
-    return model.fetch<IDataResponse>(url);
+    return model.fetch<IDataResponse>(url.href);
   };
 
   public postData = async (params = '') => {
     const model = new BaseModel();
-    const url = this.getPathData();
+    const url = this.getUrlData();
 
-    return model.post<IDataResponse>(url, params);
+    return model.post<IDataResponse>(url.href, params);
   };
 
   public getFilters = async () => {
     const model = new BaseModel();
-    const url = this.getPathFilters();
+    const url = this.getUrlFilters();
 
-    return model.fetch<ISteamFilters>(url);
+    return model.fetch<ISteamFilters>(url.href);
   };
 }

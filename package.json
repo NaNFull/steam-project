@@ -54,6 +54,7 @@
     "steam-user": "~5.x.x",
     "steamcommunity": "~3.x.x",
     "typewriter-effect": "~2.x.x",
+    "url-join": "^5.0.0",
     "use-deep-compare-effect": "~1.x.x",
     "usehooks-ts": "~2.x.x",
     "zustand": "~4.x.x"

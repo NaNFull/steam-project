@@ -61,7 +61,6 @@ export const useSteamStore = create<ISteamStore>()(
           profitPercent,
           remainder
         });
-        console.log('re', params);
         const response = await model.postData(params);
 
         if (response) {

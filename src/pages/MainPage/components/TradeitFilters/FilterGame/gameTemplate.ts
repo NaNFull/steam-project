@@ -12,7 +12,7 @@ export interface SelectedGame {
   ComponentIcon: FC;
 }
 
-export const selectedGame: SelectedGame[] = [
+const selectedGame: SelectedGame[] = [
   {
     ComponentIcon: CS2Icon,
     gameId: 730,
@@ -38,3 +38,5 @@ export const selectedGame: SelectedGame[] = [
     name: 'STEAM'
   }
 ];
+
+export { selectedGame };

@@ -1,11 +1,6 @@
 import TradeitAPI from '@src/api/tradeitAPI';
 import BaseModel from '@src/model/baseModel';
-import type {
-  IDataResponse,
-  ITradeitFilters,
-  ITradeitFiltersCS2,
-  ITradeitFiltersRUST
-} from '@src/model/tradeitModel.types';
+import type { ITradeitFilters, ITradeitFiltersCS2, ITradeitFiltersRUST } from '@src/model/tradeitModel.types';
 import type { ICurrenciesResponse } from '@src/utils/typesUtils';
 import isNil from 'lodash-es/isNil';
 
@@ -22,20 +17,20 @@ export default class TradeitModel extends TradeitAPI {
     const model = new BaseModel();
     const url = this.onChangeDataBase(filters);
 
-    return model.fetch<IDataResponse>(url);
+    return model.fetch<boolean>(url);
   };
 
   public getCurrencies = async () => {
     const model = new BaseModel();
-    const url = this.getPathCurrencies();
+    const url = this.getURLCurrencies().href;
 
     return model.fetch<ICurrenciesResponse>(url);
   };
 
   public onChangeDataBase = (filters: ITradeitFilters) => {
-    const url = new URL(this.getPathData());
+    const url = this.getURLData();
     const {
-      fresh = true,
+      fresh = false,
       gameId = 252_490,
       isForStore = 0,
       limit = 500,
@@ -49,7 +44,11 @@ export default class TradeitModel extends TradeitAPI {
     url.searchParams.set('gameId', gameId.toString());
     url.searchParams.set('offset', offset.toString());
     url.searchParams.set('sortType', sortType);
-    url.searchParams.set('searchValue', searchValue ?? '');
+
+    if (searchValue) {
+      url.searchParams.set('searchValue', searchValue);
+    }
+
     url.searchParams.set('minPrice', minPrice.toString());
     url.searchParams.set('maxPrice', maxPrice.toString());
     url.searchParams.set('fresh', fresh.toString());
