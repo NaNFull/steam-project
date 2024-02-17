@@ -1,4 +1,4 @@
-import './MainPage.scss';
+import './style.scss';
 
 import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';

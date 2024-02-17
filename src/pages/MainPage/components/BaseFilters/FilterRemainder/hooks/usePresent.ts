@@ -1,10 +1,10 @@
-import { MainPageTemplate } from '@src/pages/MainPage/MainPageTemplate';
+import { Template } from '@src/pages/MainPage/template';
 import { useMainStore } from '@src/store/main.store';
 import isNil from 'lodash-es/isNil';
 import { type FocusEventHandler, useCallback, useMemo } from 'react';
 import type { OnValueChange } from 'react-number-format/types/types';
 
-const { max: remainderMax, min: remainderMin } = MainPageTemplate.remainderSettings;
+const { max: remainderMax, min: remainderMin } = Template.remainderSettings;
 
 export const usePresent = () => {
   const remainder = useMainStore(({ remainder }) => remainder);

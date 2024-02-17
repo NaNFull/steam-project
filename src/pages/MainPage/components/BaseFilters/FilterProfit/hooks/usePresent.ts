@@ -1,9 +1,9 @@
-import { MainPageTemplate } from '@src/pages/MainPage/MainPageTemplate';
+import { Template } from '@src/pages/MainPage/template';
 import { useMainStore } from '@src/store/main.store';
 import { type FocusEventHandler, useCallback } from 'react';
 import type { OnValueChange } from 'react-number-format/types/types';
 
-const { max: profitMax, min: profitMin } = MainPageTemplate.profitPercentSettings;
+const { max: profitMax, min: profitMin } = Template.profitPercentSettings;
 
 export const usePresent = () => {
   const profitPercent = useMainStore(({ profitPercent }) => profitPercent);
@@ -11,7 +11,7 @@ export const usePresent = () => {
 
   const blurInputProfit = useCallback<FocusEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => {
-      const { max, min } = MainPageTemplate.profitPercentSettings;
+      const { max, min } = Template.profitPercentSettings;
       const formatValue = value.replace(' %', '');
       let clampedValue = formatValue ? Number.parseInt(value, 10) : 0;
 

@@ -11,7 +11,7 @@ export interface MainPageSettings {
   remainderSettings: IInputProps;
 }
 
-export const MainPageTemplate: MainPageSettings = {
+export const Template: MainPageSettings = {
   density: 'compact',
   profitPercentSettings: {
     max: 90,

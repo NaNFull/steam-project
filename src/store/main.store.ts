@@ -1,6 +1,6 @@
 import SteamModel from '@src/model/steamModel';
 import TradeitModel from '@src/model/tradeitModel';
-import { MainPageTemplate } from '@src/pages/MainPage/MainPageTemplate';
+import { Template } from '@src/pages/MainPage/template';
 import type { ISteamState, ISteamStore } from '@src/store/types.store';
 import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
@@ -10,7 +10,7 @@ const InitialState: ISteamState = {
   currencies: undefined,
   currency: 'RUB',
   data: [],
-  density: MainPageTemplate.density,
+  density: Template.density,
   gameId: 'ALL',
   maxPrice: 100_000,
   minPrice: 0,
