@@ -1,4 +1,4 @@
-import { Template } from '@src/pages/MainPage/template';
+import { Template } from '@src/pages/main/template';
 import { useMainStore } from '@src/store/main.store';
 import { type FocusEventHandler, useCallback } from 'react';
 import type { OnValueChange } from 'react-number-format/types/types';

@@ -1,6 +1,6 @@
 import '@src/assets/scss/style.scss';
 
-import MainPage from '@src/pages/MainPage';
+import MainPage from '@src/pages/main';
 import { SnackbarProvider } from 'notistack';
 import * as ReactDOM from 'react-dom/client';
 

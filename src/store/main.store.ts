@@ -1,6 +1,6 @@
 import MainModel from '@src/model/mainModel';
 import TradeitModel from '@src/model/tradeitModel';
-import { Template } from '@src/pages/MainPage/template';
+import { Template } from '@src/pages/main/template';
 import type { IMainState, IMainStore } from '@src/store/types.store';
 import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';

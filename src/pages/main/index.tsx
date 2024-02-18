@@ -2,9 +2,9 @@ import './style.scss';
 
 import { Stack } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import BaseFilters from '@src/view/MainPage/BaseFilters';
-import MainContent from '@src/view/MainPage/MainContent';
-import TradeitFilters from '@src/view/MainPage/TradeitFilters';
+import BaseFilters from '@src/view/pages/main/BaseFilters';
+import MainContent from '@src/view/pages/main/MainContent';
+import TradeitFilters from '@src/view/pages/main/TradeitFilters';
 import { clsx } from 'clsx';
 
 import { usePresent } from './hooks/usePresent';

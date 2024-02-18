@@ -1,4 +1,4 @@
-import Loader from '@src/ui/others/Loader';
+import Loader from '@src/ui/Loader';
 
 function Fallback() {
   return (

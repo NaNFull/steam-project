@@ -1,5 +1,5 @@
 import AppLayout from '@src/App';
-import Fallback from '@src/ui/others/Fallback';
+import Fallback from '@src/ui/Fallback';
 import { createBrowserRouter } from 'react-router-dom';
 
 import ErrorPage from './errors/ErrorPage';

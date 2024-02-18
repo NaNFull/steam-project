@@ -1,10 +1,9 @@
-import type { SelectedGame } from '@src/view/MainPage/BaseFilters/FilterGame/types';
-
 import ALLIcon from './GameIcons/ALLIcon';
 import CS2Icon from './GameIcons/CS2Icon';
 import RUSTIcon from './GameIcons/RUSTIcon';
 import STEAMIcon from './GameIcons/STEAMIcon';
 import TF2Icon from './GameIcons/TF2Icon';
+import type { SelectedGame } from './types';
 
 export const selectedGame: SelectedGame[] = [
   {

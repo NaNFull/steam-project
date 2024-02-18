@@ -9,12 +9,12 @@ import {
   FormGroup,
   Stack
 } from '@mui/material';
-import FilterCurrency from '@src/view/MainPage/BaseFilters/FilterCurrency';
-import FilterGame from '@src/view/MainPage/BaseFilters/FilterGame';
-import FilterPrices from '@src/view/MainPage/BaseFilters/FilterPrices';
-import FilterProfit from '@src/view/MainPage/BaseFilters/FilterProfit';
-import FilterRemainder from '@src/view/MainPage/BaseFilters/FilterRemainder';
-import Header from '@src/view/MainPage/BaseFilters/Header';
+import FilterCurrency from '@src/view/pages/main/BaseFilters/FilterCurrency';
+import FilterGame from '@src/view/pages/main/BaseFilters/FilterGame';
+import FilterPrices from '@src/view/pages/main/BaseFilters/FilterPrices';
+import FilterProfit from '@src/view/pages/main/BaseFilters/FilterProfit';
+import FilterRemainder from '@src/view/pages/main/BaseFilters/FilterRemainder';
+import Header from '@src/view/pages/main/BaseFilters/Header';
 
 import { usePresent } from './hooks/usePresent';
 

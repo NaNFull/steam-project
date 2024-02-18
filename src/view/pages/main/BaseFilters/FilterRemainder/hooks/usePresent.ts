@@ -1,4 +1,4 @@
-import { Template } from '@src/pages/MainPage/template';
+import { Template } from '@src/pages/main/template';
 import { useMainStore } from '@src/store/main.store';
 import isNil from 'lodash-es/isNil';
 import { type FocusEventHandler, useCallback, useMemo } from 'react';
