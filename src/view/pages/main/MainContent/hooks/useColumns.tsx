@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import type { IDataItemInventory } from '@src/store/types.store';
-import NameColumn from '@src/view/pages/main/TableRenders/NameColumn';
-import PriceColumn from '@src/view/pages/main/TableRenders/PriceColumn';
 import type { MRT_ColumnDef } from 'material-react-table';
 import { useMemo } from 'react';
+
+import NameColumn from '../TableRenders/NameColumn';
+import PriceColumn from '../TableRenders/PriceColumn';
 
 export const useColumns = () => {
   const columns = useMemo<MRT_ColumnDef<IDataItemInventory>[]>(
