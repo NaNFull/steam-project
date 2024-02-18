@@ -149,10 +149,11 @@
         "reservedFirst": ["key", "ref"]
       }
     ],
-    "react-perf/jsx-no-new-object-as-prop": "warn",
-    "react-perf/jsx-no-new-array-as-prop": "warn",
-    "react-perf/jsx-no-new-function-as-prop": "warn",
-    "react-perf/jsx-no-jsx-as-prop": "warn"
+    // open
+    "react-perf/jsx-no-new-object-as-prop": "off",
+    "react-perf/jsx-no-new-array-as-prop": "off",
+    "react-perf/jsx-no-new-function-as-prop": "off",
+    "react-perf/jsx-no-jsx-as-prop": "off"
   },
   "ignorePatterns": [
     "temp",
@@ -280,10 +281,13 @@
         "char": "’",
         "alternatives": ["&rsquo;"]
       }]}],
-      "react-perf/jsx-no-new-object-as-prop": "warn",
-      "react-perf/jsx-no-new-array-as-prop": "warn",
-      "react-perf/jsx-no-new-function-as-prop": "warn",
-      "react-perf/jsx-no-jsx-as-prop": "warn",
+
+      // Open
+      "react-perf/jsx-no-new-object-as-prop": "off",
+      "react-perf/jsx-no-new-array-as-prop": "off",
+      "react-perf/jsx-no-new-function-as-prop": "off",
+      "react-perf/jsx-no-jsx-as-prop": "off",
+
       "no-explicit-any": "off",
       "unicorn/prefer-at": ["error"],
       "unicorn/prefer-string-replace-all": ["error"],

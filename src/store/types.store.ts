@@ -42,7 +42,7 @@ export interface IPriceHistory {
   priceTM: number;
 }
 
-export interface ISteamState {
+export interface IMainState {
   gameId: ITradeitGameIds;
   data: IDataItemInventory[];
   density: MRT_DensityState;
@@ -55,7 +55,7 @@ export interface ISteamState {
   cacheTradeit: boolean;
 }
 
-export interface ISteamSetters {
+export interface IMainSetters {
   setGameId: Dispatch<ITradeitGameIds>;
   setMinPrice: Dispatch<number>;
   setMaxPrice: Dispatch<number>;
@@ -65,7 +65,7 @@ export interface ISteamSetters {
   setCacheTradeit: Dispatch<boolean>;
 }
 
-export interface ISteamStore extends ISteamState, ISteamSetters {
+export interface IMainStore extends IMainState, IMainSetters {
   getFilters: () => Promise<void>;
   getData: () => Promise<void>;
   postData: () => Promise<void>;

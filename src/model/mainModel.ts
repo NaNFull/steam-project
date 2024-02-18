@@ -1,8 +1,8 @@
-import SteamAPI from '@src/api/steamAPI';
+import MainAPI from '@src/api/mainAPI';
 import BaseModel from '@src/model/baseModel';
-import type { IDataResponse, ISteamFilters } from '@src/model/steamModel.types';
+import type { IDataResponse, IMainFilters } from '@src/model/mainModel.types';
 
-export default class SteamModel extends SteamAPI {
+export default class MainModel extends MainAPI {
   public constructor() {
     super();
   }
@@ -25,6 +25,6 @@ export default class SteamModel extends SteamAPI {
     const model = new BaseModel();
     const url = this.getUrlFilters();
 
-    return model.fetch<ISteamFilters>(url.href);
+    return model.fetch<IMainFilters>(url.href);
   };
 }

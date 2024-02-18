@@ -3,7 +3,7 @@ import type { ICurrencies, ICurrenciesCodes } from '@src/utils/typesUtils';
 
 export type IDataResponse = ITradeitDataResponse;
 
-export interface ISteamFilters {
+export interface IMainFilters {
   gameId: ITradeitGameIds;
   currency: ICurrenciesCodes;
   currencies: ICurrencies;

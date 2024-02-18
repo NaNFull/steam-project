@@ -1,7 +1,7 @@
 import API from '@src/api';
 import urlJoin from 'url-join';
 
-export default class SteamAPI extends API {
+export default class MainAPI extends API {
   readonly #origin = new URL('http://localhost:3002');
   readonly #api = new URL(this.#origin);
   readonly #urlData = new URL(this.#origin);
@@ -14,7 +14,7 @@ export default class SteamAPI extends API {
     this.#urlFilters.href = urlJoin(this.#api.href, 'filters');
   }
 
-  public getUrlSteamAPI = () => this.#api;
+  public getUrlAPI = () => this.#api;
 
   public getUrlData = () => this.#urlData;
 

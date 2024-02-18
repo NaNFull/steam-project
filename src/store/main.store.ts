@@ -1,11 +1,11 @@
-import SteamModel from '@src/model/steamModel';
+import MainModel from '@src/model/mainModel';
 import TradeitModel from '@src/model/tradeitModel';
 import { Template } from '@src/pages/MainPage/template';
-import type { ISteamState, ISteamStore } from '@src/store/types.store';
+import type { IMainState, IMainStore } from '@src/store/types.store';
 import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
-const InitialState: ISteamState = {
+const InitialState: IMainState = {
   cacheTradeit: false,
   currencies: undefined,
   currency: 'RUB',
@@ -18,7 +18,7 @@ const InitialState: ISteamState = {
   remainder: 2
 };
 
-export const useMainStore = create<ISteamStore>()(
+export const useMainStore = create<IMainStore>()(
   persist(
     devtools(
       (set, get) => ({
@@ -34,7 +34,7 @@ export const useMainStore = create<ISteamStore>()(
           }
         },
         getData: async () => {
-          const model = new SteamModel();
+          const model = new MainModel();
           const response = await model.getData();
 
           if (response) {
@@ -42,7 +42,7 @@ export const useMainStore = create<ISteamStore>()(
           }
         },
         getFilters: async () => {
-          const model = new SteamModel();
+          const model = new MainModel();
           const response = await model.getFilters();
 
           if (response) {
@@ -52,7 +52,7 @@ export const useMainStore = create<ISteamStore>()(
         },
         postData: async () => {
           const { cacheTradeit, currency, gameId, maxPrice, minPrice, profitPercent, remainder } = get();
-          const model = new SteamModel();
+          const model = new MainModel();
           const params = JSON.stringify({
             cacheTradeit,
             currency,
@@ -83,7 +83,7 @@ export const useMainStore = create<ISteamStore>()(
         setProfitPercent: (value) => set({ profitPercent: value }),
         setRemainder: (value) => set({ remainder: value })
       }),
-      { name: 'Steam' }
+      { name: 'Main' }
     ),
     {
       name: 'main-store',
