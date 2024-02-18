@@ -38,7 +38,7 @@ export default class TradeitModel extends TradeitAPI {
       minPrice = 0,
       offset = 0,
       searchValue,
-      sortType = 'Popularity'
+      sortType = 'Popularity',
     } = filters;
 
     url.searchParams.set('gameId', gameId.toString());
@@ -80,9 +80,9 @@ export default class TradeitModel extends TradeitAPI {
       showTradeLock = true,
       showUserListing,
       statTrak,
-      type
+      type,
     }: ITradeitFiltersCS2,
-    url: URL
+    url: URL,
   ) => {
     url.searchParams.set('maxFloat', maxFloat < 1 ? maxFloat.toFixed(5) : '1');
     url.searchParams.set('minFloat', minFloat > 0 ? minFloat.toFixed(5) : '0');

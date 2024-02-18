@@ -15,7 +15,7 @@ const InitialState: IMainState = {
   maxPrice: 100_000,
   minPrice: 0,
   profitPercent: 70,
-  remainder: 2
+  remainder: 2,
 };
 
 export const useMainStore = create<IMainStore>()(
@@ -60,7 +60,7 @@ export const useMainStore = create<IMainStore>()(
             maxPrice,
             minPrice,
             profitPercent,
-            remainder
+            remainder,
           });
           const response = await model.postData(params);
 
@@ -81,14 +81,14 @@ export const useMainStore = create<IMainStore>()(
         setMaxPrice: (value) => set({ maxPrice: value }),
         setMinPrice: (value) => set({ minPrice: value }),
         setProfitPercent: (value) => set({ profitPercent: value }),
-        setRemainder: (value) => set({ remainder: value })
+        setRemainder: (value) => set({ remainder: value }),
       }),
-      { name: 'Main' }
+      { name: 'Main' },
     ),
     {
       name: 'main-store',
       partialize: ({ data, ...state }) => state,
-      storage: createJSONStorage(() => localStorage)
-    }
-  )
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
 );

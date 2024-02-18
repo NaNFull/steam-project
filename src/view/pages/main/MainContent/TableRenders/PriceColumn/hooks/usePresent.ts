@@ -26,7 +26,7 @@ export const usePresent = ({ currency, price, priceUSD, prices, remainder, ...pr
     return {
       memoPrice: formatterValue(price, currency, remainder),
       memoPriceUSD: formatterValue(priceUSD, 'USD'),
-      memoPrices: transformedData.slice(0, 5)
+      memoPrices: transformedData.slice(0, 5),
     };
   }, [currency, price, priceUSD, prices, remainder]);
   const handlePopoverOpen = useCallback<MouseEventHandler<HTMLElement>>(({ currentTarget }) => {
@@ -47,6 +47,6 @@ export const usePresent = ({ currency, price, priceUSD, prices, remainder, ...pr
     open: Boolean(anchorEl),
     popoverID: anchorEl ? 'simple-popover' : undefined,
     remainder,
-    ...pre
+    ...pre,
   };
 };

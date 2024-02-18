@@ -13,38 +13,45 @@ export const useColumns = () => {
         Cell: ({ row: { original } }) => <NameColumn {...original} />,
         accessorKey: 'name',
         header: 'Название предмета',
-        sortingFn: (rowA, rowB) => rowB.original.counts - rowA.original.counts
+        sortingFn: (rowA, rowB) => rowB.original.counts - rowA.original.counts,
       },
+      // {
+      //   accessorKey: 'steamAppId',
+      //   filterSelectOptions: selectedGame.map(({ gameId, name }) => ({ label: name, value: gameId })),
+      //   filterVariant: 'multi-select',
+      //   header: 'Игра',
+      //   size: 50
+      // },
       {
         Cell: ({
           row: {
             original,
-            original: { priceInCurrency }
-          }
+            original: { priceInCurrency },
+          },
         }) => <PriceColumn {...original} price={priceInCurrency} type="priceInCurrency" />,
         accessorKey: 'priceInCurrency',
         filterFn: 'between',
         filterVariant: 'range',
         header: 'Цена на Tradeit',
         size: 150,
-        sortDescFirst: false
+        sortDescFirst: false,
       },
       {
         Cell: ({
           row: {
             original,
-            original: { priceTM, priceUSDTM }
-          }
+            original: { priceTM, priceUSDTM },
+          },
         }) => <PriceColumn {...original} price={priceTM} priceUSD={priceUSDTM} type="priceTM" />,
         accessorKey: 'priceTM',
         filterFn: 'between',
         filterVariant: 'range',
         header: 'Продажа на ТМ',
         size: 150,
-        sortDescFirst: false
-      }
+        sortDescFirst: false,
+      },
     ],
-    []
+    [],
   );
 
   return { columns };

@@ -14,7 +14,7 @@ function FilterPrices() {
     ({ value }) => {
       setMinPrice(Number.parseFloat(value));
     },
-    [setMinPrice]
+    [setMinPrice],
   );
 
   const blurValueMinPrice = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -32,14 +32,14 @@ function FilterPrices() {
 
       setMinPrice(clampedValue);
     },
-    [maxPrice, setMinPrice]
+    [maxPrice, setMinPrice],
   );
 
   const onValueMaxPrice = useCallback<OnValueChange>(
     ({ value }) => {
       setMaxPrice(Number.parseFloat(value));
     },
-    [setMaxPrice]
+    [setMaxPrice],
   );
 
   const blurValueMaxPrice = useCallback<ChangeEventHandler<HTMLInputElement>>(
@@ -57,7 +57,7 @@ function FilterPrices() {
 
       setMaxPrice(clampedValue);
     },
-    [minPrice, setMaxPrice]
+    [minPrice, setMaxPrice],
   );
 
   return (

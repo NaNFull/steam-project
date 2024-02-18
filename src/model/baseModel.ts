@@ -18,9 +18,9 @@ export default class BaseModel {
         body: params,
         headers: [
           ['Accept', 'application/json'],
-          ['Content-Type', 'application/json']
+          ['Content-Type', 'application/json'],
         ],
-        method: 'POST'
+        method: 'POST',
       };
       const response = await fetch(url, requestOptions);
 

@@ -10,30 +10,30 @@ export const selectedGame: SelectedGame[] = [
     ComponentIcon: ALLIcon,
     gameId: 'ALL',
     id: 0,
-    name: 'ALL'
+    name: 'ALL',
   },
   {
     ComponentIcon: CS2Icon,
     gameId: 730,
     id: 1,
-    name: 'CS2'
+    name: 'CS2',
   },
   {
     ComponentIcon: RUSTIcon,
     gameId: 252_490,
     id: 2,
-    name: 'RUST'
+    name: 'RUST',
   },
   {
     ComponentIcon: TF2Icon,
     gameId: 440,
     id: 3,
-    name: 'TF2'
+    name: 'TF2',
   },
   {
     ComponentIcon: STEAMIcon,
     gameId: 753,
     id: 4,
-    name: 'STEAM'
-  }
+    name: 'STEAM',
+  },
 ];

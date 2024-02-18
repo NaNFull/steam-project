@@ -20,7 +20,7 @@ export const usePresent = () => {
 
       setProfitPercent(clampedValue);
     },
-    [setProfitPercent]
+    [setProfitPercent],
   );
   const onValueProfit = useCallback<OnValueChange>(
     ({ value }) => {
@@ -28,12 +28,12 @@ export const usePresent = () => {
 
       setProfitPercent(tempValue);
     },
-    [setProfitPercent]
+    [setProfitPercent],
   );
   return {
     blurInputProfit,
     onValueProfit,
     profitPercent,
-    textTooltip: `Ограничение профита от ${profitMin} % до ${profitMax} %`
+    textTooltip: `Ограничение профита от ${profitMin} % до ${profitMax} %`,
   };
 };

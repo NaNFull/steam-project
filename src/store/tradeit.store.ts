@@ -9,7 +9,7 @@ const InitialState: ITradeitState = {
   maxPrice: 100_000,
   minFloat: 0,
   minPrice: 0,
-  offset: 500
+  offset: 500,
 };
 
 export const useTradeitStore = create<ITradeitStore>()(
@@ -27,7 +27,7 @@ export const useTradeitStore = create<ITradeitStore>()(
             maxPrice,
             minFloat,
             minPrice,
-            offset: offset
+            offset: offset,
           };
           const response = await model.getData(temp);
           console.log('getTradeitData', response);
@@ -37,13 +37,13 @@ export const useTradeitStore = create<ITradeitStore>()(
         setMaxPrice: (value) => set({ maxPrice: value }),
         setMinFloat: (value) => set({ minFloat: value }),
         setMinPrice: (value) => set({ minPrice: value }),
-        setOffset: (value) => set({ offset: value })
+        setOffset: (value) => set({ offset: value }),
       }),
-      { name: 'Tradeit' }
+      { name: 'Tradeit' },
     ),
     {
       name: 'tradeit-store',
-      storage: createJSONStorage(() => localStorage)
-    }
-  )
+      storage: createJSONStorage(() => localStorage),
+    },
+  ),
 );

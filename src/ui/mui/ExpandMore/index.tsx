@@ -12,8 +12,8 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   marginLeft: 'auto',
   transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
   transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest
-  })
+    duration: theme.transitions.duration.shortest,
+  }),
 }));
 
 export default ExpandMore;

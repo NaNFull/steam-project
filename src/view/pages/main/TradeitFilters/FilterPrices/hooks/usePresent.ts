@@ -14,7 +14,7 @@ export const usePresent = () => {
 
       setMinPrice(tempValue);
     },
-    [setMinPrice]
+    [setMinPrice],
   );
 
   const blurValueMinPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -32,7 +32,7 @@ export const usePresent = () => {
 
       setMinPrice(clampedValue);
     },
-    [maxPrice, setMinPrice]
+    [maxPrice, setMinPrice],
   );
 
   const onValueMaxPrice = useCallback<OnValueChange>(
@@ -41,7 +41,7 @@ export const usePresent = () => {
 
       setMaxPrice(tempValue);
     },
-    [setMaxPrice]
+    [setMaxPrice],
   );
 
   const blurValueMaxPrice = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -59,7 +59,7 @@ export const usePresent = () => {
 
       setMaxPrice(clampedValue);
     },
-    [minPrice, setMaxPrice]
+    [minPrice, setMaxPrice],
   );
 
   return {
@@ -68,6 +68,6 @@ export const usePresent = () => {
     maxPrice,
     minPrice,
     onValueMaxPrice,
-    onValueMinPrice
+    onValueMinPrice,
   };
 };

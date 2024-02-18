@@ -17,11 +17,11 @@ const NumberInput = forwardRef<NumericFormatProps, CustomProps>(function Numeric
       onChange({
         target: {
           name: name,
-          value: value
-        }
+          value: value,
+        },
       });
     },
-    [name, onChange]
+    [name, onChange],
   );
 
   return (

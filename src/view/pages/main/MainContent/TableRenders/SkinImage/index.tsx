@@ -16,8 +16,8 @@ function SkinImage({ counts, imgURL }: Props) {
       sx={{
         '& > .MuiBadge-badge': {
           right: '15%',
-          top: '90%'
-        }
+          top: '90%',
+        },
       }}
     >
       <Typography
@@ -35,14 +35,14 @@ function SkinImage({ counts, imgURL }: Props) {
         open={open}
         anchorOrigin={{
           horizontal: 'left',
-          vertical: 'top'
+          vertical: 'top',
         }}
         sx={{
-          pointerEvents: 'none'
+          pointerEvents: 'none',
         }}
         transformOrigin={{
           horizontal: 'left',
-          vertical: 'top'
+          vertical: 'top',
         }}
         onClose={handlePopoverClose}
       >

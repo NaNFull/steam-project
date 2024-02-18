@@ -12,7 +12,7 @@ export const usePresent = () => {
     ({ value }) => {
       setMinFloat(Number.parseFloat(value));
     },
-    [setMinFloat]
+    [setMinFloat],
   );
 
   const blurValueMinFloat = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -29,14 +29,14 @@ export const usePresent = () => {
 
       setMinFloat(clampedValue);
     },
-    [maxFloat, setMinFloat]
+    [maxFloat, setMinFloat],
   );
 
   const onValueMaxFloat = useCallback<OnValueChange>(
     ({ value }) => {
       setMaxFloat(Number.parseFloat(value));
     },
-    [setMaxFloat]
+    [setMaxFloat],
   );
 
   const blurValueMaxFloat = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -53,7 +53,7 @@ export const usePresent = () => {
 
       setMaxFloat(clampedValue);
     },
-    [minFloat, setMaxFloat]
+    [minFloat, setMaxFloat],
   );
   return {
     blurValueMaxFloat,
@@ -61,6 +61,6 @@ export const usePresent = () => {
     maxFloat,
     minFloat,
     onValueMaxFloat,
-    onValueMinFloat
+    onValueMinFloat,
   };
 };

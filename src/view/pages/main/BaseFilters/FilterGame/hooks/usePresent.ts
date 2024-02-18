@@ -20,12 +20,12 @@ export const usePresent = () => {
         }
       }
     },
-    [setGameId]
+    [setGameId],
   );
   return {
     data: selectedGame,
     defaultValue: selectedGame[0].gameId,
     gameId,
-    onSetGameId
+    onSetGameId,
   };
 };

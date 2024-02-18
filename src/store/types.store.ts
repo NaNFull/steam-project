@@ -9,7 +9,7 @@ export interface IDataItemInventory {
   id: number;
   name: string;
   counts: number;
-  steamAppId: number;
+  steamAppId: ITradeitFilters;
   prices: IPriceHistory[];
   priceUSD: number;
   priceUSDTM: number;

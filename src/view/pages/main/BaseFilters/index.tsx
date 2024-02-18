@@ -7,7 +7,7 @@ import {
   Collapse,
   FormControlLabel,
   FormGroup,
-  Stack
+  Stack,
 } from '@mui/material';
 import FilterCurrency from '@src/view/pages/main/BaseFilters/FilterCurrency';
 import FilterGame from '@src/view/pages/main/BaseFilters/FilterGame';

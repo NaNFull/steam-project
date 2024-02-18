@@ -12,11 +12,11 @@ export const usePresent = () => {
 
       setOffset(tempValue);
     },
-    [setOffset]
+    [setOffset],
   );
 
   return {
     offset,
-    onValueOffset
+    onValueOffset,
   };
 };

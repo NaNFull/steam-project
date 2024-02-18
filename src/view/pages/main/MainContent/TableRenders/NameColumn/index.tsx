@@ -16,7 +16,7 @@ function NameColumn({ counts, id, imgURL, name, steamAppId }: IDataItemInventory
       sx={{
         alignItems: 'center',
         display: 'flex',
-        gap: '1rem'
+        gap: '1rem',
       }}
     >
       <SkinImage counts={counts} imgURL={imgURL} />

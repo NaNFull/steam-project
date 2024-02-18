@@ -9,5 +9,5 @@ const element = document.querySelector('#root')!;
 ReactDOM.createRoot(element).render(
   <SnackbarProvider maxSnack={3}>
     <MainPage />
-  </SnackbarProvider>
+  </SnackbarProvider>,
 );

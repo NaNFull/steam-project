@@ -15,10 +15,10 @@ export const Template: MainPageSettings = {
   density: 'compact',
   profitPercentSettings: {
     max: 90,
-    min: 30
+    min: 30,
   },
   remainderSettings: {
     max: 15,
-    min: 0
-  }
+    min: 0,
+  },
 };

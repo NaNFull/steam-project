@@ -16,6 +16,6 @@ export const usePresent = () => {
     anchorEl,
     handlePopoverClose,
     handlePopoverOpen,
-    open: Boolean(anchorEl)
+    open: Boolean(anchorEl),
   };
 };

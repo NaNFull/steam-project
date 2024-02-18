@@ -15,7 +15,7 @@ export const currenciesLocale = {
   RUB: 'ru-RU',
   THB: 'th-TH',
   TRY: 'tr-TR',
-  USD: 'en-EU'
+  USD: 'en-EU',
 };
 
 export const formatterValue = (value: number, currency: ICurrenciesCodes, fractionDigits = 2) =>
@@ -24,5 +24,5 @@ export const formatterValue = (value: number, currency: ICurrenciesCodes, fracti
     // These options are needed to round to whole numbers if that's what you want.
     minimumFractionDigits: fractionDigits, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
     // maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-    style: 'currency'
+    style: 'currency',
   }).format(value);

@@ -11,6 +11,6 @@ export const usePresent = () => {
     expanded,
     gameId,
     getTradeitData,
-    toggleExpanded
+    toggleExpanded,
   };
 };

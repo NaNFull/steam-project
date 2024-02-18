@@ -17,6 +17,6 @@ export const usePresent = () => {
   return {
     expanded,
     postData,
-    toggleExpanded
+    toggleExpanded,
   };
 };

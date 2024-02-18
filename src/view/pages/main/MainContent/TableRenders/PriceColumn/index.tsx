@@ -21,7 +21,7 @@ function PriceColumn(props: Props) {
     open,
     popoverID,
     remainder,
-    type
+    type,
   } = usePresent(props);
 
   return (
@@ -50,7 +50,7 @@ function PriceColumn(props: Props) {
         open={open}
         anchorOrigin={{
           horizontal: 'left',
-          vertical: 'bottom'
+          vertical: 'bottom',
         }}
         onClose={handlePopoverClose}
       >

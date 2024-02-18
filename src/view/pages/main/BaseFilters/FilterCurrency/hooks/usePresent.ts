@@ -10,15 +10,15 @@ export const usePresent = () => {
 
   const onSetCurrency = useCallback<ChangeEventHandler<HTMLInputElement>>(
     ({ target: { value } }) => setCurrency(value as ICurrenciesCodes),
-    [setCurrency]
+    [setCurrency],
   );
   const data = Object.entries(currencies ?? { RUB: 100 }).filter(([currency]) =>
-    currenciesToKeep.includes(currency as ICurrenciesCodes)
+    currenciesToKeep.includes(currency as ICurrenciesCodes),
   );
 
   return {
     currency,
     data,
-    onSetCurrency
+    onSetCurrency,
   };
 };

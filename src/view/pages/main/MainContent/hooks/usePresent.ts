@@ -20,10 +20,10 @@ export const usePresent = () => {
     maxMultiSortColCount: 3,
     onDensityChange: setDensity,
     state: {
-      density
-    }
+      density,
+    },
   });
   return {
-    table
+    table,
   };
 };

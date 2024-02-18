@@ -22,7 +22,7 @@ export const usePresent = () => {
 
       setRemainder(tempValue);
     },
-    [setRemainder]
+    [setRemainder],
   );
 
   const blurInputRemainder = useCallback<FocusEventHandler<HTMLInputElement>>(
@@ -34,7 +34,7 @@ export const usePresent = () => {
 
       setRemainder(clampedValue);
     },
-    [setRemainder]
+    [setRemainder],
   );
 
   return {
@@ -42,6 +42,6 @@ export const usePresent = () => {
     onValueRemainder,
     remainder,
     suffix,
-    textTooltip: `Ограничение дробной части от ${remainderMin} до ${remainderMax}`
+    textTooltip: `Ограничение дробной части от ${remainderMin} до ${remainderMax}`,
   };
 };

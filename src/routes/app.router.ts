@@ -11,15 +11,15 @@ const AppRouter = createBrowserRouter([
     children: [
       {
         Component: Fallback,
-        index: true
+        index: true,
       },
       {
         Component: Fallback,
-        path: 'about'
-      }
+        path: 'about',
+      },
     ],
-    path: '/'
-  }
+    path: '/',
+  },
 ]);
 
 export default AppRouter;
