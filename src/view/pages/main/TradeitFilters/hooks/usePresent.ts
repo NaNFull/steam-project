@@ -4,6 +4,7 @@ import { useBoolean } from 'usehooks-ts';
 export const usePresent = () => {
   const gameId = useTradeitStore(({ gameId }) => gameId);
   const getTradeitData = useTradeitStore(({ getTradeitData }) => getTradeitData);
+  const isFetching = useTradeitStore(({ isFetching }) => isFetching);
 
   const { toggle: toggleExpanded, value: expanded } = useBoolean(true);
 
@@ -11,6 +12,7 @@ export const usePresent = () => {
     expanded,
     gameId,
     getTradeitData,
+    loading: isFetching,
     toggleExpanded,
   };
 };

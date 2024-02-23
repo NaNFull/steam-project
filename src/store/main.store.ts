@@ -23,6 +23,11 @@ export const useMainStore = create<IMainStore>()(
     devtools(
       (set, get) => ({
         ...InitialState,
+        getClearCache: async () => {
+          const model = new TradeitModel();
+
+          await model.getClearCache();
+        },
         getCurrencies: async () => {
           const model = new TradeitModel();
 

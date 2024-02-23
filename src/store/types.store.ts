@@ -71,6 +71,7 @@ export interface IMainStore extends IMainState, IMainSetters {
   postData: () => Promise<void>;
   setDensity: OnChangeFn<MRT_DensityState>;
   getCurrencies: DispatchWithoutAction;
+  getClearCache: DispatchWithoutAction;
 }
 
 export interface ITradeitState {
@@ -80,6 +81,7 @@ export interface ITradeitState {
   minFloat: number;
   maxFloat: number;
   offset: number;
+  isFetching: boolean;
 }
 
 export interface ITradeitSetters {

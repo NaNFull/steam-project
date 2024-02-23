@@ -5,6 +5,7 @@ import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
 const InitialState: ITradeitState = {
   gameId: 730,
+  isFetching: false,
   maxFloat: 1,
   maxPrice: 100_000,
   minFloat: 0,
@@ -19,8 +20,11 @@ export const useTradeitStore = create<ITradeitStore>()(
         ...InitialState,
         getTradeitData: async () => {
           const { gameId, maxFloat, maxPrice, minFloat, minPrice, offset } = get();
+
+          set({ isFetching: true });
+
           const model = new TradeitModel();
-          const temp = {
+          const response = await model.getData({
             gameId,
             limit: 500,
             maxFloat,
@@ -28,9 +32,11 @@ export const useTradeitStore = create<ITradeitStore>()(
             minFloat,
             minPrice,
             offset: offset,
-          };
-          const response = await model.getData(temp);
-          console.log('getTradeitData', response);
+          });
+
+          if (response) {
+            set({ isFetching: false });
+          }
         },
         setGameId: (value) => set({ gameId: value }),
         setMaxFloat: (value) => set({ maxFloat: value }),

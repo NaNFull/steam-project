@@ -19,7 +19,7 @@ import Header from '@src/view/pages/main/BaseFilters/Header';
 import { usePresent } from './hooks/usePresent';
 
 function BaseFilters() {
-  const { expanded, postData, toggleExpanded } = usePresent();
+  const { cacheTradeit, expanded, getClearCache, handleCacheTradeit, postData, toggleExpanded } = usePresent();
 
   return (
     <Card aria-label="Взаимодействие с таблицей">
@@ -35,10 +35,18 @@ function BaseFilters() {
             <FilterGame />
             <FilterPrices />
           </Stack>
-          <Stack direction="row" mt={1} spacing={1}>
+          <Stack alignItems="center" direction="row" justifyContent="flex-start" mt={1} spacing={2}>
             <FormGroup>
-              <FormControlLabel control={<Checkbox />} label="Последний cache Tradeit" />
+              <FormControlLabel
+                checked={cacheTradeit}
+                control={<Checkbox />}
+                label="Последний cache Tradeit"
+                onChange={handleCacheTradeit}
+              />
             </FormGroup>
+            <Button size="small" variant="contained" onClick={getClearCache}>
+              Очистить cache
+            </Button>
           </Stack>
         </CardContent>
         <CardActions sx={{ justifyContent: 'end' }}>

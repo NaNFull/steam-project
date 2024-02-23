@@ -7,7 +7,7 @@ export default class TradeitAPI extends API {
   readonly #dataURL = new URL(this.#origin);
   readonly #myDataURL = new URL(this.#origin);
   readonly #currenciesURL = new URL(this.#origin);
-  readonly #imagesURL = new URL(this.#origin);
+  readonly #clearCacheURL = new URL(this.#origin);
 
   public constructor() {
     super();
@@ -15,7 +15,7 @@ export default class TradeitAPI extends API {
     this.#dataURL.href = urlJoin(this.#api.href, 'data');
     this.#myDataURL.href = urlJoin(this.#api.href, 'my-data');
     this.#currenciesURL.href = urlJoin(this.#api.href, 'exchange-rate');
-    this.#imagesURL.href = urlJoin(this.#api.href, 'images');
+    this.#clearCacheURL.href = urlJoin(this.#api.href, 'clear-cache-data');
   }
 
   public getURLTradeitAPI = () => this.#api;
@@ -26,5 +26,5 @@ export default class TradeitAPI extends API {
 
   public getURLCurrencies = () => this.#currenciesURL;
 
-  public getURLImages = () => this.#imagesURL;
+  public getURLClearCache = () => this.#clearCacheURL;
 }

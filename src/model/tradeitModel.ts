@@ -121,4 +121,11 @@ export default class TradeitModel extends TradeitAPI {
       url.searchParams.set('rustCategory', this.getRustId(rustCategory).toString());
     }
   };
+
+  public getClearCache = () => {
+    const model = new BaseModel();
+    const url = this.getURLClearCache().href;
+
+    return model.fetch<boolean>(url);
+  };
 }
